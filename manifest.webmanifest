@@ -1,0 +1,19 @@
+{
+  "name": "Formulierungsbausteine Verhaltenstherapie",
+  "short_name": "Bausteine VT",
+  "description": "Formulierungshilfen für Fallkonzeption und Bericht an die Gutachterin oder den Gutachter nach PTV 3.",
+  "lang": "de",
+  "dir": "ltr",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#EEF1EF",
+  "theme_color": "#1F4A46",
+  "categories": ["medical", "productivity", "utilities"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

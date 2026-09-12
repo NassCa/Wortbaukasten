@@ -1,0 +1,2089 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1F4A46">
+<meta name="color-scheme" content="light">
+<meta name="description" content="Formulierungshilfen für Fallkonzeption und Bericht an die Gutachterin oder den Gutachter nach PTV 3.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Bausteine VT">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon-192.png" type="image/png">
+<title>Formulierungsbausteine VT — Fallkonzeption und Bericht (PTV 3)</title>
+<style>
+:root{
+  --ink:#16211F;
+  --ink-2:#42524E;
+  --ink-3:#76847F;
+  --paper:#EEF1EF;
+  --card:#FFFFFF;
+  --line:#D3DAD6;
+  --marke:#1F4A46;
+  --marke-hell:#DCE8E5;
+  --platz:#8A5A16;
+  --platz-bg:#F6EBD8;
+  --warn:#7A2E2E;
+  --radius:3px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  font-size:16px;
+  line-height:1.55;
+  -webkit-text-size-adjust:100%;
+}
+.ui{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+
+/* Kopf */
+header{
+  background:var(--marke);
+  color:#EAF1EF;
+  padding:calc(18px + env(safe-area-inset-top)) 20px 16px;
+  position:sticky;top:0;z-index:40;
+}
+header h1{
+  font-size:19px;line-height:1.25;margin:0 0 4px;font-weight:600;letter-spacing:.01em;
+}
+header p{margin:0;font-size:13px;color:#A9C3BE;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.suchzeile{margin-top:12px;display:flex;gap:8px}
+#suche{
+  flex:1;min-width:0;padding:9px 11px;border:1px solid #3D6B66;border-radius:var(--radius);
+  background:#123B38;color:#EAF1EF;font-size:15px;font-family:inherit;
+}
+#suche::placeholder{color:#7EA29D}
+#suche:focus{outline:2px solid #8FC0B9;outline-offset:1px}
+.btn-korb{
+  padding:9px 12px;border:1px solid #3D6B66;background:#123B38;color:#EAF1EF;
+  border-radius:var(--radius);font-size:14px;cursor:pointer;white-space:nowrap;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+}
+.btn-korb b{color:#FFD9A0}
+
+/* Reiter */
+nav.reiter{
+  display:flex;gap:0;overflow-x:auto;background:#0F332F;
+  position:sticky;top:0;z-index:39;-webkit-overflow-scrolling:touch;
+}
+nav.reiter button{
+  flex:0 0 auto;background:none;border:none;border-bottom:3px solid transparent;
+  color:#9FBEB9;padding:11px 14px;font-size:13.5px;cursor:pointer;white-space:nowrap;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+}
+nav.reiter button.aktiv{color:#FFFFFF;border-bottom-color:#E8B45F}
+
+main{padding:16px 14px 120px;max-width:760px;margin:0 auto}
+
+.kapitel-kopf{margin:6px 0 14px}
+.kapitel-kopf h2{font-size:20px;margin:0 0 6px;font-weight:600;line-height:1.25}
+.kapitel-kopf .hinweis{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:13.5px;color:var(--ink-2);background:var(--marke-hell);
+  border-left:3px solid var(--marke);padding:9px 11px;border-radius:0 var(--radius) var(--radius) 0;
+}
+
+h3.gruppe{
+  font-size:15px;margin:22px 0 8px;font-weight:600;color:var(--marke);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  border-bottom:1px solid var(--line);padding-bottom:5px;
+}
+
+.karte{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin-bottom:10px;overflow:hidden;
+}
+.variante{display:flex;gap:10px;padding:11px 12px;border-top:1px solid #ECEFED;align-items:flex-start}
+.variante:first-child{border-top:none}
+.variante .txt{flex:1;min-width:0;font-size:15.5px;line-height:1.55}
+.variante .werkzeuge{display:flex;flex-direction:column;gap:5px;flex:0 0 auto}
+.mini{
+  border:1px solid var(--line);background:#F7F9F8;color:var(--ink-2);
+  width:30px;height:28px;border-radius:var(--radius);cursor:pointer;font-size:14px;line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+}
+.mini:active{background:var(--marke-hell)}
+.mini.fertig{background:var(--marke);color:#fff;border-color:var(--marke)}
+.mini.drin{background:#E8B45F;border-color:#C8933D;color:#3A2A08}
+
+.p{background:var(--platz-bg);color:var(--platz);padding:0 3px;border-radius:2px;font-style:italic}
+
+/* Wortfelder */
+.wortfeld{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:12px;margin-bottom:12px}
+.wortfeld h4{margin:0 0 3px;font-size:15px;font-weight:600}
+.wortfeld .sub{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:12.5px;color:var(--ink-3);margin:0 0 9px;
+}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{
+  border:1px solid var(--line);background:#F7F9F8;border-radius:20px;padding:4px 11px;
+  font-size:14px;cursor:pointer;color:var(--ink);
+}
+.chip:active,.chip.fertig{background:var(--marke);color:#fff;border-color:var(--marke)}
+
+/* Korb */
+#korb{
+  position:fixed;left:0;right:0;bottom:0;padding-bottom:env(safe-area-inset-bottom);z-index:60;background:var(--card);
+  border-top:2px solid var(--marke);max-height:72vh;overflow:auto;display:none;
+  box-shadow:0 -6px 24px rgba(22,33,31,.18);
+}
+#korb.offen{display:block}
+#korb .kopf{
+  display:flex;justify-content:space-between;align-items:center;gap:8px;
+  padding:12px 14px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--card);
+}
+#korb .kopf strong{font-size:15px}
+#korb .aktionen{display:flex;gap:7px}
+#korb .aktionen button{
+  border:1px solid var(--marke);background:var(--marke);color:#fff;border-radius:var(--radius);
+  padding:7px 11px;font-size:13.5px;cursor:pointer;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+}
+#korb .aktionen button.sek{background:#fff;color:var(--marke)}
+#korb ol{margin:0;padding:10px 14px 18px 32px}
+#korb li{margin-bottom:9px;font-size:15px}
+#korb li button{
+  border:none;background:none;color:var(--warn);cursor:pointer;font-size:13px;padding:0 0 0 6px;
+}
+.leer{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  color:var(--ink-3);font-size:14px;padding:18px 14px;
+}
+.fussnote{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:12.5px;color:var(--ink-3);margin-top:26px;border-top:1px solid var(--line);padding-top:12px;
+}
+.fussnote a{color:var(--marke)}
+#meldung{
+  position:fixed;bottom:80px;left:50%;transform:translateX(-50%);
+  background:var(--ink);color:#fff;padding:8px 14px;border-radius:20px;font-size:13.5px;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  opacity:0;pointer-events:none;transition:opacity .18s;z-index:70;
+}
+#meldung.an{opacity:1}
+
+.wahlreihe{margin:0 0 16px}
+.chip.diag{font-size:13.5px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.chip.gewaehlt{background:var(--marke);color:#fff;border-color:var(--marke)}
+.diagkopf{
+  background:var(--card);border:1px solid var(--line);border-left:4px solid var(--marke);
+  border-radius:var(--radius);padding:10px 12px;margin:6px 0 4px;
+}
+.diagkopf strong{display:block;font-size:16px;margin-bottom:3px}
+.diagkopf .ll{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:12.5px;color:var(--ink-2);display:block;line-height:1.45;
+}
+
+.genuszeile{display:inline-flex;margin-top:10px;border:1px solid #3D6B66;border-radius:20px;overflow:hidden}
+.genuszeile button{
+  background:#123B38;color:#8FB3AE;border:none;padding:5px 14px;font-size:13px;cursor:pointer;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+}
+.genuszeile button.aktiv{background:#DCE8E5;color:#0F332F;font-weight:600}
+.trefferzeile{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:13.5px;color:var(--ink-2);margin:0 0 14px;
+}
+.trefferzeile button,.leer button{
+  border:1px solid var(--line);background:#fff;color:var(--marke);border-radius:var(--radius);
+  padding:4px 9px;font-size:13px;cursor:pointer;margin-left:6px;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+}
+mark{background:#FBE8B8;color:inherit;padding:0 1px;border-radius:2px}
+.korbwerkzeuge{display:inline-flex;gap:5px;margin-left:8px;vertical-align:middle}
+.korbwerkzeuge button{
+  border:1px solid var(--line);background:#F7F9F8;color:var(--ink-2);border-radius:var(--radius);
+  padding:2px 7px;font-size:12.5px;cursor:pointer;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+}
+.korbwerkzeuge button[data-weg]{color:var(--warn)}
+#korb .kopf{flex-wrap:wrap}
+
+#maske{
+  position:fixed;left:0;right:0;bottom:0;padding-bottom:env(safe-area-inset-bottom);z-index:61;background:var(--card);
+  border-top:2px solid var(--marke);max-height:78vh;overflow:auto;display:none;
+  box-shadow:0 -6px 24px rgba(22,33,31,.18);
+}
+#maske.offen{display:block}
+#maske .kopf{
+  display:flex;justify-content:space-between;align-items:center;gap:8px;
+  padding:12px 14px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--card);
+}
+#maske .kopf strong{font-size:15px}
+#maske .aktionen{display:flex;gap:7px}
+#maske .aktionen button{
+  border:1px solid var(--marke);background:#fff;color:var(--marke);border-radius:var(--radius);
+  padding:7px 11px;font-size:13.5px;cursor:pointer;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+}
+.maskenzeile{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:10px 14px 4px}
+#maskeFilter{
+  flex:1;min-width:160px;padding:8px 10px;border:1px solid var(--line);border-radius:var(--radius);
+  font-size:15px;font-family:inherit;background:#F7F9F8;
+}
+.schalter{font-size:13px;color:var(--ink-2);display:flex;align-items:center;gap:6px}
+.warnung{margin:2px 14px 8px;font-size:12.5px;color:var(--warn)}
+#maskeListe{padding:0 14px 24px}
+#maskeListe h5{
+  margin:14px 0 6px;font-size:13.5px;color:var(--marke);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  border-bottom:1px solid var(--line);padding-bottom:4px;
+}
+#maskeListe .sub{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:12.5px;color:var(--ink-3);margin:0 0 8px;
+}
+.felder{display:grid;grid-template-columns:1fr;gap:8px}
+@media (min-width:620px){.felder{grid-template-columns:1fr 1fr}}
+.feld{display:flex;flex-direction:column;gap:3px}
+.feld span{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:12.5px;color:var(--ink-2);
+}
+.feld span i{color:var(--ink-3);font-style:normal}
+.feld input{
+  padding:8px 10px;border:1px solid var(--line);border-radius:var(--radius);
+  font-size:15px;font-family:inherit;background:#fff;
+}
+.feld input:focus{outline:2px solid var(--marke);outline-offset:1px}
+.gefuellt{
+  background:#DFEFE4;color:#14472B;padding:0 3px;border-radius:2px;
+  box-shadow:inset 0 -1px 0 #9DC7AC;cursor:pointer;
+}
+.p{cursor:pointer}
+.umfang{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:12.5px;color:var(--ink-3);margin:10px 14px 0;
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (min-width:760px){
+  main{padding:22px 24px 120px}
+  header h1{font-size:22px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Formulierungsbausteine Verhaltenstherapie</h1>
+  <p class="ui">Fallkonzeption und Bericht an die Gutachterin oder den Gutachter</p>
+  <div class="suchzeile">
+    <input id="suche" type="search" placeholder="Suchen: Vermeidung, Prognose, Grundannahme …" autocomplete="off">
+    <button class="btn-korb ui" id="maskeKnopf">Fallwerte <b id="maskeZahl">0</b></button>
+    <button class="btn-korb ui" id="korbKnopf">Sammlung <b id="korbZahl">0</b></button>
+  </div>
+  <div class="genuszeile ui" id="genus">
+    <button data-g="w">Patientin</button><button data-g="m">Patient</button>
+  </div>
+</header>
+
+<nav class="reiter ui" id="reiter"></nav>
+
+<main id="inhalt"></main>
+
+<div id="korb">
+  <div class="kopf">
+    <strong class="ui">Sammlung</strong>
+    <div class="aktionen">
+      <button id="korbKopieren">Alles kopieren</button>
+      <button class="sek" id="korbDatei">Als Datei</button>
+      <button class="sek" id="korbLeeren">Leeren</button>
+      <button class="sek" id="korbZu">Schließen</button>
+    </div>
+  </div>
+  <div id="korbListe"></div>
+</div>
+
+<div id="maske">
+  <div class="kopf">
+    <strong class="ui">Fallwerte</strong>
+    <div class="aktionen">
+      <button class="sek" id="maskeLeeren">Leeren</button>
+      <button class="sek" id="maskeZu">Schließen</button>
+    </div>
+  </div>
+  <div class="maskenzeile ui">
+    <input id="maskeFilter" type="search" placeholder="Platzhalter suchen …" autocomplete="off">
+    <label class="schalter"><input type="checkbox" id="fallSpeichern"> Auf diesem Gerät speichern</label>
+  </div>
+  <p class="warnung ui">Nur pseudonymisierte Angaben eintragen. Ohne den Haken bleiben die Werte nur bis zum Schließen des Reiters erhalten.</p>
+  <div id="maskeListe"></div>
+</div>
+
+<div id="meldung"></div>
+
+<script>
+var DATEN = [
+
+/* ===================== 1 ===================== */
+{
+ id:"s1", tab:"1 Sozialdaten",
+ titel:"1. Relevante soziodemographische Daten",
+ hinweis:"Nur das, was später im Bedingungsmodell oder im Behandlungsplan wieder vorkommt. Jede Angabe hier sollte im Bericht eine Funktion haben — Arbeitsplatz als Auslöser, Kinder als Ressource oder Belastung, Wohnsituation als Vermeidungsraum.",
+ gruppen:[
+  {name:"Eröffnungssatz",
+   items:[
+    ["{{N}} ist {Alter} Jahre alt, von Beruf {Beruf}, und lebt {Wohn- und Familiensituation}.",
+     "{{N}}, {Alter} Jahre, {Beruf}, lebt {Wohn- und Familiensituation}.",
+     "{Anrede und Kürzel}, {Alter} Jahre, {Beruf}, {Familienstand}, {Kinderzahl} Kinder."],
+    ["{{N}} arbeitet seit {Zeitraum} in Vollzeit als {Beruf}.",
+     "{{N}} ist in Teilzeit mit {Stunden} Wochenstunden als {Beruf} tätig.",
+     "{{N}} befindet sich in {Ausbildung/Studium/Umschulung} im {Semester/Lehrjahr}."],
+    ["Seit {Datum} besteht Arbeitsunfähigkeit, aktuell bis {Datum} bescheinigt.",
+     "{{N}} ist seit {Dauer} durchgehend arbeitsunfähig geschrieben.",
+     "{{N}} ist aktuell arbeitsfähig, meldet sich jedoch wiederholt kurzzeitig krank."],
+    ["{{N}} lebt getrennt und versorgt {Kinderzahl} Kinder im Alter von {Alter} überwiegend allein.",
+     "{{N}} lebt seit {Zeitraum} in fester Partnerschaft, gemeinsamer Haushalt seit {Zeitraum}.",
+     "{{N}} lebt allein; regelmäßiger Kontakt besteht zu {Bezugsperson}."]
+   ]},
+  {name:"Zugangsweg und Vorlauf",
+   items:[
+    ["Der Kontakt kam über die Psychotherapeutische Sprechstunde am {Datum} zustande.",
+     "{{N}} wurde von {überweisende Stelle} an die Ambulanz vermittelt.",
+     "{{N}} meldete sich auf Empfehlung von {Quelle} selbst an."],
+    ["Es fanden {Anzahl} probatorische Sitzungen im Zeitraum vom {Datum} bis {Datum} statt.",
+     "Die Diagnostik erfolgte über {Anzahl} probatorische Sitzungen einschließlich {Verfahren}.",
+     "Nach der Sprechstunde am {Datum} folgten {Anzahl} probatorische Sitzungen."]
+   ]}
+ ]
+},
+
+/* ===================== 2 ===================== */
+{
+ id:"s2", tab:"2 Symptomatik & Befund",
+ titel:"2. Symptomatik und psychischer Befund",
+ hinweis:"Patientenangaben und eigene Beobachtung sprachlich trennen: berichtete Symptomatik im Referatstil („schildert“, „gibt an“), psychischer Befund im Indikativ als eigene Feststellung. Schwere, Frequenz und Dauer gehören zu jedem Leitsymptom — daran hängt später die Sitzungszahl.",
+ gruppen:[
+  {name:"Spontanangaben, Einstieg",
+   items:[
+    ["Im Vordergrund der Beschwerdeschilderung stehen {Leitsymptome}.",
+     "{{N}} stellt sich vor mit {Leitsymptom}, beschrieben als „{wörtliches Zitat}“.",
+     "Als Hauptanliegen benennt {{n}} {Anliegen}."],
+    ["Die Beschwerden bestehen seit {Zeitraum} und haben sich seit {Ereignis} deutlich verstärkt.",
+     "Die Symptomatik besteht in wechselnder Ausprägung seit {Zeitraum}, mit deutlicher Zunahme seit {Zeitpunkt}.",
+     "{{N}} datiert den Beginn auf {Zeitpunkt}, im zeitlichen Zusammenhang mit {Ereignis}."]
+   ]},
+  {name:"Symptomschilderung mit Schwere und Frequenz",
+   items:[
+    ["{{N}} schildert {Symptom} mit einer Häufigkeit von {Frequenz} und einer Dauer von jeweils {Dauer}.",
+     "{Symptom} tritt nach Angaben {{g}} {Frequenz} auf und hält {Dauer} an.",
+     "{{N}} gibt {Frequenz} auftretende {Symptom} an, subjektive Belastung {Wert} von 10."],
+    ["Begleitend berichtet {{n}} über {körperliche Begleitsymptome}.",
+     "An vegetativen Symptomen bestehen {Symptome}.",
+     "Somatisch imponieren {Symptome}, hierfür liegt keine organische Erklärung vor."],
+    ["Der Schlaf ist mit {Ein-/Durchschlafstörung} und einer Schlafdauer von etwa {Stunden} beeinträchtigt.",
+     "Es bestehen Einschlafstörungen mit einer Latenz von etwa {Minuten} sowie morgendliches Früherwachen.",
+     "Der Appetit ist vermindert, das Gewicht hat in {Zeitraum} um {kg} abgenommen."]
+   ]},
+  {name:"Beeinträchtigung und Funktionsniveau",
+   items:[
+    ["Die Symptomatik führt zu deutlichen Einschränkungen in den Bereichen {Bereiche}.",
+     "Beruflich zeigen sich Einschränkungen in Form von {konkrete Einschränkung}, privat durch {konkrete Einschränkung}.",
+     "Der Aktionsradius hat sich auf {Radius} eingeengt."],
+    ["Soziale Kontakte wurden im Verlauf des letzten Jahres weitgehend reduziert; aktuell besteht regelmäßiger Kontakt nur noch zu {Person}.",
+     "Frühere Aktivitäten wie {Aktivitäten} werden seit {Zeitraum} nicht mehr ausgeübt.",
+     "Alltagsanforderungen wie {Anforderungen} können nur unter erheblicher Anstrengung oder mit Unterstützung bewältigt werden."]
+   ]},
+  {name:"Kontaktverhalten, Erscheinungsbild",
+   items:[
+    ["{{N}} erscheint pünktlich, altersentsprechend gekleidet und gepflegt.",
+     "{{N}} wirkt im Erstkontakt angespannt, der Blickkontakt ist reduziert.",
+     "Die Kontaktaufnahme gestaltet sich zunächst zurückhaltend, im Verlauf zunehmend offen und zugewandt."],
+    ["Im Gesprächsverhalten fällt {Auffälligkeit} auf.",
+     "{{N}} schildert ausführlich und detailreich, lässt sich gut strukturieren.",
+     "{{N}} antwortet knapp, Nachfragen sind wiederholt erforderlich."]
+   ]},
+  {name:"Psychischer Befund, Blockformulierung",
+   items:[
+    ["Wach, bewusstseinsklar, zu allen Qualitäten orientiert. Auffassung, Konzentration und Gedächtnis {Beurteilung}. Formaler Gedankengang geordnet, inhaltlich keine Hinweise auf Wahn, Ich-Störungen oder Sinnestäuschungen. Affekt {Beschreibung}, Schwingungsfähigkeit {Beurteilung}, Antrieb {Beurteilung}. Kein Anhalt für akute Eigen- oder Fremdgefährdung."],
+    ["Die Stimmung ist {gedrückt / ausgeglichen / gereizt / subdepressiv}, die affektive Schwingungsfähigkeit {erhalten / eingeschränkt / aufgehoben}.",
+     "Der Affekt ist {ratlos / ängstlich getönt / dysphor}, die Modulationsfähigkeit {erhalten / vermindert}.",
+     "Der Antrieb ist {reduziert / gesteigert / unauffällig}, die Psychomotorik {unauffällig / verlangsamt / unruhig}."],
+    ["Konzentration und Aufmerksamkeit sind im Gespräch {unauffällig / leicht reduziert / deutlich beeinträchtigt}.",
+     "Mnestische Funktionen sind orientierend geprüft und unauffällig.",
+     "Im Gespräch zeigen sich Aufmerksamkeitsschwankungen mit wiederholtem Verlust des Gesprächsfadens."]
+   ]},
+  {name:"Suizidalität",
+   items:[
+    ["Suizidgedanken werden glaubhaft verneint; es besteht kein Hinweis auf Selbst- oder Fremdgefährdung.",
+     "{{N}} berichtet über passive Todeswünsche ohne Handlungsdruck, Absicht, Plan oder Vorbereitungshandlungen; Absprachefähigkeit ist gegeben, die Distanzierung glaubhaft.",
+     "Anamnestisch besteht ein Suizidversuch im Jahr {Jahr}; aktuell ist {{n}} von Suizidalität distanziert."],
+    ["Es wurde ein individueller Notfallplan mit {Inhalte} erarbeitet; {{n}} verfügt über die Kontaktdaten des regionalen Krisendienstes.",
+     "Zu Beginn der Behandlung ist die Erstellung eines Krisen- und Notfallplans vorgesehen.",
+     "Die Suizidalität wird im Verlauf regelhaft zu Sitzungsbeginn erfragt und dokumentiert."]
+   ]},
+  {name:"Krankheitsverständnis {{g}} oder {{g}}",
+   items:[
+    ["{{N}} führt die Beschwerden auf {subjektive Ursache} zurück.",
+     "{{N}} erlebt die Symptomatik als {körperlich bedingt / unerklärlich / persönliches Versagen}.",
+     "Ein Zusammenhang zwischen {Belastung} und der Symptomatik wird {{V}} bislang nicht hergestellt."],
+    ["{{N}} äußert die Befürchtung, {Befürchtung}.",
+     "{{N}} erhofft sich von der Behandlung {Erwartung}.",
+     "Die Erwartung an die Therapie ist zunächst auf {passive/aktive Erwartung} gerichtet und wurde in der Probatorik gemeinsam präzisiert."]
+   ]},
+  {name:"Testpsychologische Befunde",
+   items:[
+    ["Im {Verfahren} ergibt sich ein Summenwert von {Wert}, entsprechend einer {Schweregrad}en Ausprägung.",
+     "Der {Verfahren}-Wert liegt mit {Wert} im Bereich {Bereich} (Cut-off {Wert}).",
+     "Die testpsychologische Untersuchung mittels {Verfahren} stützt die klinische Einschätzung einer {Diagnose}."],
+    ["Zur Verlaufsmessung ist die Wiedervorlage des {Verfahren} nach {Intervall} vorgesehen.",
+     "Verlaufsdiagnostisch werden {Verfahren} alle {Intervall} Sitzungen eingesetzt.",
+     "Ergänzend wurde {Verfahren} eingesetzt, hier zeigt sich {Befund}."]
+   ]}
+ ]
+},
+
+/* ===================== 3 ===================== */
+{
+ id:"s3", tab:"3 Somatik",
+ titel:"3. Somatischer Befund, Konsiliarbericht",
+ hinweis:"Kurz halten. Wichtig ist die Aussage, dass eine somatische Abklärung erfolgt ist und keine Kontraindikation besteht. Medikation immer mit Präparat, Dosis und verordnender Stelle.",
+ gruppen:[
+  {name:"Konsiliarbericht",
+   items:[
+    ["Der Konsiliarbericht vom {Datum} liegt vor. Ein somatisches Korrelat der Beschwerden wurde nicht gefunden, Einwände gegen eine ambulante Psychotherapie bestehen nicht.",
+     "Laut Konsiliarbericht vom {Datum} ergeben sich keine Hinweise auf eine organische Verursachung der Symptomatik.",
+     "Der Konsiliarbericht bestätigt {Befund} und sieht keine Kontraindikation für eine Richtlinienpsychotherapie."]
+   ]},
+  {name:"Somatische Vorgeschichte",
+   items:[
+    ["An körperlichen Erkrankungen bestehen {Erkrankungen}, hausärztlich behandelt.",
+     "Somatisch sind {Erkrankungen} bekannt; hieraus ergeben sich {Einschränkungen / keine Einschränkungen} für die Behandlung.",
+     "Relevante somatische Vorerkrankungen sind nicht bekannt."],
+    ["{Erkrankung} steht in funktionalem Zusammenhang mit der psychischen Symptomatik, da {Zusammenhang}.",
+     "Die chronische Schmerzsymptomatik bei {Diagnose} wirkt als aufrechterhaltender Faktor über {Mechanismus}."]
+   ]},
+  {name:"Medikation",
+   items:[
+    ["{{N}} nimmt aktuell {Präparat} {Dosis} täglich ein, verordnet durch {Stelle} seit {Datum}.",
+     "Eine psychopharmakologische Behandlung besteht nicht.",
+     "Die Medikation wurde zuletzt am {Datum} auf {Präparat und Dosis} umgestellt; die Einstellung erfolgt fachärztlich durch {Stelle}."],
+    ["Eine Abstimmung mit der behandelnden {Fachrichtung} über die Medikation ist im Behandlungsverlauf vorgesehen.",
+     "Bedarfsmedikation mit {Präparat} wird {Frequenz} eingenommen; die Einnahme wird als Sicherheitsverhalten mitbehandelt."]
+   ]},
+  {name:"Substanzkonsum",
+   items:[
+    ["Nikotin: {Menge} täglich seit {Jahre}. Alkohol: {Menge und Frequenz}. Weitere Substanzen werden verneint.",
+     "Der Alkoholkonsum liegt bei {Menge}; Hinweise auf eine Abhängigkeitserkrankung ergeben sich nicht.",
+     "Der Konsum von {Substanz} erfolgt situationsgebunden zur {Funktion} und wird als Vermeidungsverhalten in die Behandlungsplanung einbezogen."]
+   ]},
+  {name:"Vorbehandlungen",
+   items:[
+    ["Eine ambulante Psychotherapie fand von {Zeitraum} über {Sitzungszahl} Sitzungen im Verfahren {Verfahren} statt; sie wurde {regulär beendet / abgebrochen}.",
+     "Vorbehandlungen im ambulanten oder stationären Rahmen haben bislang nicht stattgefunden.",
+     "{{N}} befand sich vom {Zeitraum} in stationärer Behandlung in {Klinik}, Entlassdiagnose {Diagnose}; der Entlassbericht liegt vor."],
+    ["Die Vorbehandlung wurde als {Bewertung} erlebt; hilfreich war nach Angaben {{g}} {Element}, als nicht hilfreich erlebte sie {Element}.",
+     "Aus der Vorbehandlung ergeben sich für die aktuelle Planung folgende Konsequenzen: {Konsequenz}.",
+     "Der Rückfall nach Abschluss der Vorbehandlung wird als Hinweis auf {unzureichende Generalisierung / fehlende Rezidivprophylaxe} verstanden."]
+   ]}
+ ]
+},
+/* ===================== 4 ===================== */
+{
+ id:"s4", tab:"4 Verhaltensanalyse",
+ titel:"4. Lebensgeschichte, Krankheitsanamnese, Verhaltensanalyse",
+ hinweis:"Das Kernstück. Biografie nur insoweit, als sie im funktionalen Bedingungsmodell gebraucht wird — jede biografische Angabe braucht einen Anschluss an prädisponierende Bedingungen, Grundannahmen oder Verhaltensdefizite. Mikroanalyse (SORKC) an einer konkreten Situation, Makroanalyse als Verknüpfung der Problembereiche.",
+ gruppen:[
+  {name:"Biografischer Einstieg",
+   items:[
+    ["{{N}} wuchs als {Geschwisterposition} von {Anzahl} Kindern bei {Bezugspersonen} in {Umfeld} auf.",
+     "{{N}} ist das {Position} Kind; der Vater war {Beruf}, die Mutter {Beruf}.",
+     "Die Kindheit beschreibt {{n}} insgesamt als {Beschreibung}, wobei {Einschränkung}."],
+    ["Das Familienklima schildert {{n}} als {Klima}; emotionale Zuwendung war an {Bedingung} geknüpft.",
+     "Der Vater wird als {Beschreibung} erinnert, die Mutter als {Beschreibung}.",
+     "Prägend war die Erfahrung, dass {Erfahrung}."]
+   ]},
+  {name:"Prädisponierende Bedingungen",
+   items:[
+    ["Als prädisponierend sind {Faktoren} anzusehen.",
+     "Auf der Ebene der Vulnerabilität sind {Faktoren} bedeutsam.",
+     "Vor dem Hintergrund von {Bedingung} entwickelte {{n}} früh {Muster}."],
+    ["Aus diesen Lernerfahrungen leiten sich die Grundannahmen „{Grundannahme über sich}“ und „{Grundannahme über andere}“ ab.",
+     "Es bildeten sich dysfunktionale Grundüberzeugungen im Sinne von „{Grundannahme}“ heraus.",
+     "Die konditionale Annahme „Nur wenn ich {Bedingung}, werde ich {Konsequenz}“ wurde handlungsleitend."],
+    ["Kompensatorisch entwickelte {{n}} {Bewältigungsstrategie}, die im Herkunftskontext funktional war.",
+     "Als Plan im Sinne der Plananalyse lässt sich formulieren: „{Plan}“.",
+     "Modelllernen am Verhalten {Person} trug zur Ausbildung von {Verhalten} bei."],
+    ["Verhaltensdefizite bestehen im Bereich {Kompetenz}, da entsprechende Lernmöglichkeiten in der Herkunftsfamilie fehlten.",
+     "Fertigkeiten zur {Kompetenz} konnten biografisch nicht ausreichend erworben werden."]
+   ]},
+  {name:"Auslösende Bedingungen",
+   items:[
+    ["Auslösend wirkte {Ereignis} im {Zeitraum}, wodurch {Mechanismus} aktiviert wurde.",
+     "Die Erstmanifestation steht im zeitlichen und inhaltlichen Zusammenhang mit {Ereignis}.",
+     "Das auslösende Ereignis {Ereignis} berührte unmittelbar die Grundannahme „{Grundannahme}“ und führte zu deren Aktivierung."],
+    ["Eine Kumulation von Belastungen ({Belastungen}) überschritt die vorhandenen Bewältigungsmöglichkeiten.",
+     "Im Sinne des Vulnerabilitäts-Stress-Modells traf eine erhöhte Vulnerabilität auf {Belastung}.",
+     "Ein singuläres auslösendes Ereignis ist nicht abgrenzbar; die Symptomatik entwickelte sich schleichend im Kontext von {Bedingungen}."]
+   ]},
+  {name:"Aufrechterhaltende Bedingungen",
+   items:[
+    ["Aufrechterhaltend wirken {Faktoren}.",
+     "Zentral für die Aufrechterhaltung ist die negative Verstärkung des Vermeidungsverhaltens: Durch {Verhalten} kommt es kurzfristig zu einer Reduktion von {Emotion}, langfristig unterbleibt die korrigierende Erfahrung, dass {Erfahrung}.",
+     "Das Sicherheitsverhalten {Verhalten} verhindert die Widerlegung der Befürchtung {Befürchtung} und stabilisiert damit die dysfunktionale Annahme."],
+    ["Positiv verstärkend wirkt {Konsequenz} durch {Person/Umfeld}.",
+     "Im sozialen Umfeld wird das Symptomverhalten durch {Reaktion} unbeabsichtigt verstärkt.",
+     "Die Entlastung von {Anforderung} stellt einen Krankheitsgewinn dar, der der Symptomreduktion entgegensteht."],
+    ["Es entsteht ein Teufelskreis aus {A}, {B} und {C}, der sich wechselseitig verstärkt.",
+     "Der Rückzug führt zu einem Verlust positiver Verstärker, was die Stimmung weiter senkt und den Rückzug verstärkt.",
+     "Die selektive Aufmerksamkeitslenkung auf {Reiz} erhöht die Wahrnehmungswahrscheinlichkeit und bestätigt scheinbar die Befürchtung."]
+   ]},
+  {name:"Mikroanalyse SORKC",
+   items:[
+    ["Beispielhaft sei eine typische Situation vom {Zeitpunkt} dargestellt: {Situation}.",
+     "Die funktionale Analyse lässt sich an folgender Situation verdeutlichen: {Situation}."],
+    ["S: {Situation}. O: {Grundannahme, Vulnerabilität}. R kognitiv: „{Gedanke}“. R emotional: {Emotion}, Intensität {Wert}/10. R physiologisch: {Reaktion}. R motorisch: {Verhalten}. K: kurzfristig {kurzfristige Konsequenz}, langfristig {langfristige Konsequenz}. C: {Kontingenz}."],
+    ["Kurzfristig folgt auf das Verhalten {Konsequenz}, langfristig {Konsequenz}; die Verhaltensweise wird damit negativ verstärkt.",
+     "Die Kontingenz ist intermittierend, was die hohe Löschungsresistenz des Verhaltens erklärt."]
+   ]},
+  {name:"Makroanalyse und Überleitung",
+   items:[
+    ["Übergeordnet lassen sich die Problembereiche {Bereiche} auf die gemeinsame Grundannahme „{Grundannahme}“ zurückführen.",
+     "Die einzelnen Problembereiche stehen nicht unverbunden nebeneinander, sondern lassen sich als Ausdruck von {übergeordnetes Muster} verstehen.",
+     "Als übergeordnetes Störungsmodell wird das {Modellbezeichnung nach Autor} zugrunde gelegt."],
+    ["Damit ergibt sich folgendes Störungsmodell: Auf dem Boden von {Prädisposition} führte {Auslöser} zu {Symptomatik}, die durch {Aufrechterhaltung} stabilisiert wird.",
+     "Das gemeinsam mit {{d}} erarbeitete Erklärungsmodell wurde in der {Sitzungszahl}. Sitzung schriftlich festgehalten und von ihr als zutreffend erlebt."]
+   ]},
+  {name:"Ressourcen",
+   items:[
+    ["An Ressourcen verfügt {{n}} über {Ressourcen}.",
+     "Als Schutzfaktoren sind {Faktoren} zu nennen.",
+     "Therapeutisch nutzbar sind insbesondere {Ressource} sowie die tragfähige Beziehung zu {Person}."],
+    ["{{N}} verfügt über gute Introspektionsfähigkeit und einen differenzierten Zugang zum eigenen Erleben.",
+     "{{N}} zeigt eine hohe Bereitschaft, zwischen den Sitzungen selbstständig zu arbeiten.",
+     "Frühere erfolgreiche Bewältigung von {Situation} belegt vorhandene Kompetenzen, auf die zurückgegriffen werden kann."]
+   ]}
+ ]
+},
+
+/* ===================== 5 ===================== */
+{
+ id:"s5", tab:"5 Diagnose",
+ titel:"5. Diagnose zum Zeitpunkt der Antragstellung",
+ hinweis:"Diagnosesicherheit angeben. Bei mehreren Diagnosen die behandlungsleitende zuerst nennen und begründen, welche im Fokus steht. Differenzialdiagnostik nur, wo sie sich aufdrängt.",
+ gruppen:[
+  {name:"Diagnosestellung",
+   items:[
+    ["{ICD-Code} {Diagnosetext}, gesichert.",
+     "Behandlungsleitende Diagnose: {ICD-Code} {Diagnosetext} (G). Komorbid: {ICD-Code} {Diagnosetext} (G).",
+     "{ICD-Code} {Diagnosetext}, Verdacht auf {ICD-Code} {Diagnosetext} (V)."],
+    ["Die Kriterien der {Diagnose} nach ICD-10 sind mit {Kriterien} vollständig erfüllt; die Symptomatik besteht seit {Dauer} und überschreitet damit das Zeitkriterium.",
+     "Für die Diagnose sprechen insbesondere {Leitsymptome} bei gleichzeitig deutlicher Beeinträchtigung der {Funktionsbereiche}.",
+     "Die Schweregradeinschätzung als {leicht / mittelgradig / schwer} stützt sich auf {Anzahl} erfüllte Haupt- und {Anzahl} Zusatzkriterien sowie den Funktionsverlust in {Bereich}."]
+   ]},
+  {name:"Differenzialdiagnostik und Komorbidität",
+   items:[
+    ["Differenzialdiagnostisch wurde {Alternativdiagnose} erwogen und aufgrund von {Argument} nicht vergeben.",
+     "Gegen {Alternativdiagnose} spricht {Argument}.",
+     "Eine organische Verursachung wurde durch {Untersuchung} ausgeschlossen."],
+    ["Die komorbide {Diagnose} steht in funktionalem Zusammenhang mit der Hauptdiagnose, da {Zusammenhang}; sie wird im Rahmen der Behandlung mitberücksichtigt.",
+     "Die Behandlung fokussiert zunächst auf {Diagnose}, da {Begründung der Priorisierung}.",
+     "Persönlichkeitsakzentuierungen im Sinne von {Beschreibung} sind erkennbar, erfüllen jedoch nicht die Kriterien einer Persönlichkeitsstörung."]
+   ]}
+ ]
+},
+
+/* ===================== 6 ===================== */
+{
+ id:"s6", tab:"6 Behandlungsplan",
+ titel:"6. Behandlungsplan und Prognose",
+ hinweis:"Hier prüft die Gutachtertätigkeit am genauesten: Ziele müssen aus dem Bedingungsmodell folgen, Methoden aus den Zielen, die Sitzungszahl aus dem Umfang der Methoden. Jede Technik mit Indikationsbegründung, nicht als Aufzählung.",
+ gruppen:[
+  {name:"Therapieziele",
+   items:[
+    ["Gemeinsam mit {{d}} wurden folgende Therapieziele vereinbart: {Ziel 1}, {Ziel 2}, {Ziel 3}.",
+     "Als übergeordnetes Ziel formuliert {{n}}: „{Zitat}“. Daraus wurden folgende Teilziele operationalisiert: {Teilziele}.",
+     "Die Therapieziele wurden in der {Sitzungszahl}. Sitzung schriftlich festgehalten und priorisiert."],
+    ["Ziel 1: Reduktion von {Symptom} um {Ausmaß}, messbar über {Instrument}.",
+     "Ziel 2: Wiederaufnahme von {Aktivität} mit einer Frequenz von {Frequenz}.",
+     "Ziel 3: Aufbau von {Kompetenz}, überprüfbar an {Indikator}."],
+    ["Die Zielerreichung wird über {Instrument} alle {Intervall} Sitzungen sowie über vereinbarte Verhaltensindikatoren überprüft."]
+   ]},
+  {name:"Behandlungsplan, Phasen",
+   items:[
+    ["Die Behandlung gliedert sich in {Anzahl} Phasen: {Phase 1}, {Phase 2}, {Phase 3}, Rezidivprophylaxe.",
+     "Sitzungen {Bereich}: Beziehungsaufbau, Diagnostik, Erarbeitung des individuellen Störungsmodells, Zielklärung.",
+     "Sitzungen {Bereich}: störungsspezifische Intervention mittels {Methoden}."],
+    ["Sitzungen {Bereich}: Transfer in den Alltag, Bearbeitung der Grundannahme „{Grundannahme}“, Aufbau alternativer Verhaltensweisen.",
+     "Sitzungen {Bereich}: Stabilisierung, Rezidivprophylaxe, Erarbeitung eines Notfallplans, Ausschleichen der Sitzungsfrequenz."]
+   ]},
+  {name:"Methoden mit Indikationsbegründung",
+   items:[
+    ["Zur Bearbeitung von {Problem} ist {Methode} indiziert, da {Begründung aus dem Bedingungsmodell}.",
+     "Da das Vermeidungsverhalten zentral aufrechterhaltend wirkt, ist eine Expositionsbehandlung in vivo mit Reaktionsverhinderung vorgesehen; die Expositionshierarchie wird gemeinsam erstellt.",
+     "Angesichts des Verstärkerverlusts steht zu Beginn der Aufbau positiver Aktivitäten mittels Aktivitätenplanung und Tagesstrukturierung im Vordergrund."],
+    ["Die dysfunktionalen Grundannahmen werden mittels kognitiver Umstrukturierung, Spaltentechnik und Verhaltensexperimenten bearbeitet.",
+     "Zur Bearbeitung der biografisch entstandenen Schemata sind imaginative Verfahren vorgesehen.",
+     "Defizite im Bereich {Kompetenz} werden über Rollenspiele mit Videofeedback und gestufte Übungsaufgaben im Alltag bearbeitet."],
+    ["Psychoedukation zu {Thema} erfolgt anhand des gemeinsam erarbeiteten Störungsmodells.",
+     "Zwischen den Sitzungen bearbeitet {{n}} Übungsaufgaben ({Beispiele}), die zu Sitzungsbeginn ausgewertet werden.",
+     "Angehörigengespräche mit {Person} sind in {Anzahl} Sitzungen vorgesehen, um {Ziel}."]
+   ]},
+  {name:"Setting, Frequenz, Sitzungszahl",
+   items:[
+    ["Beantragt werden {Anzahl} Sitzungen Einzeltherapie im Setting à 50 Minuten bei einer Frequenz von zunächst {Frequenz}.",
+     "Das Einzelsetting ist indiziert, da {Begründung}; ein Gruppensetting kommt aufgrund von {Begründung} zunächst nicht in Betracht.",
+     "Zu Beginn ist eine wöchentliche Frequenz vorgesehen, die in der Stabilisierungsphase auf {Frequenz} reduziert wird."],
+    ["Die beantragte Sitzungszahl begründet sich aus der Komplexität des Bedingungsgefüges mit {Problembereiche} sowie der Chronifizierung über {Dauer}.",
+     "Eine Kurzzeittherapie ist ausreichend, da die Symptomatik umschrieben ist, keine relevante Komorbidität besteht und {{n}} über gute Ressourcen verfügt.",
+     "Der Umfang einer Langzeittherapie ist erforderlich, da neben der Symptomreduktion die Bearbeitung überdauernder dysfunktionaler Schemata und der Aufbau fehlender Kompetenzen notwendig sind."]
+   ]},
+  {name:"Kontingent und Anrechnung",
+   items:[
+    ["Beantragt werden {Anzahl} Therapieeinheiten; eine Therapieeinheit entspricht 50 Minuten Einzelbehandlung.",
+     "In der Kurzzeittherapie werden zunächst 12 Therapieeinheiten beantragt (KZT 1); über die Fortführung als KZT 2 wird nach Auswertung des Verlaufs entschieden.",
+     "Beantragt wird der erste Bewilligungsschritt der Langzeittherapie mit 60 Therapieeinheiten."],
+    ["Aus der vorausgegangenen Kurzzeittherapie sind {12 bzw. 24} Therapieeinheiten anzurechnen.",
+     "Die vorausgegangene Akutbehandlung mit {Anzahl} Therapieeinheiten ist auf das beantragte Kontingent anzurechnen.",
+     "Ein geringeres Kontingent als der Maximalschritt ist ausreichend, da {Begründung}."],
+    ["Für die Einbeziehung von {Bezugsperson} sind {Anzahl} Therapieeinheiten vorgesehen; therapeutisch geboten ist dieser Umfang, weil {Begründung}."]
+   ]},
+  {name:"Kooperation",
+   items:[
+    ["Eine Kooperation mit {Stelle} ist nach schriftlicher Entbindung von der Schweigepflicht vorgesehen.",
+     "Die medikamentöse Behandlung verbleibt bei {Stelle}; eine Abstimmung erfolgt bei Bedarf.",
+     "Eine Zusammenarbeit mit weiteren Berufsgruppen ist derzeit nicht erforderlich."]
+   ]},
+  {name:"Prognose",
+   items:[
+    ["Die Prognose wird als {günstig / eher günstig / eingeschränkt günstig} eingeschätzt.",
+     "Prognostisch günstig wirken {Motivation, Introspektionsfähigkeit, stabiles soziales Umfeld, klare Zielvorstellungen}.",
+     "Prognostisch ungünstig wirken {Chronifizierungsdauer, Krankheitsgewinn, unklarer Rentenwunsch, geringe soziale Einbindung}; diese Faktoren werden von Beginn an thematisiert."],
+    ["{{N}} ist zur aktiven Mitarbeit bereit und hat in der Probatorik {Beleg für Veränderungsbereitschaft} gezeigt.",
+     "Die Umstellungsfähigkeit erscheint erhalten; {{n}} konnte bereits in der Probatorik {Veränderung} umsetzen.",
+     "Als äußeres Veränderungshindernis ist {Hindernis} zu benennen; hierauf wird durch {Maßnahme} reagiert."],
+    ["Insgesamt ist bei regelmäßiger Teilnahme und Umsetzung der Übungsaufgaben eine deutliche Reduktion der Symptomatik sowie eine Verbesserung der Teilhabe in {Bereich} zu erwarten."]
+   ]}
+ ]
+},
+
+/* ===================== 7 ===================== */
+{
+ id:"s7", tab:"7 Umwandlung",
+ titel:"7. Zusätzliche Angaben beim Umwandlungsantrag",
+ hinweis:"Die entscheidende Frage ist nicht, was noch offen ist, sondern warum es nicht im Rahmen der Kurzzeittherapie abschließbar war und was neu hinzugekommen oder sichtbar geworden ist.",
+ gruppen:[
+  {name:"Bisheriger Verlauf",
+   items:[
+    ["Bislang wurden {Anzahl} Sitzungen im Zeitraum vom {Datum} bis {Datum} durchgeführt; die Termine wurden regelmäßig wahrgenommen.",
+     "Der bisherige Schwerpunkt lag auf {Schwerpunkte}.",
+     "Die therapeutische Beziehung ist tragfähig; {{n}} arbeitet zuverlässig an den vereinbarten Übungsaufgaben."],
+    ["Im {Instrument} zeigt sich eine Veränderung von {Wert} auf {Wert}.",
+     "Die Symptomatik hat sich in Bezug auf {Symptom} deutlich gebessert, in Bezug auf {Symptom} unverändert fortbestanden.",
+     "Ziel {Nummer} konnte weitgehend erreicht werden, Ziel {Nummer} bislang nicht, da {Begründung}."]
+   ]},
+  {name:"Begründung der Umwandlung",
+   items:[
+    ["Im bisherigen Verlauf wurde deutlich, dass {neue Erkenntnis}, was eine Ausweitung des Behandlungsumfangs erforderlich macht.",
+     "Erst nach Stabilisierung war die Bearbeitung von {Thema} möglich; hierfür reicht das Kontingent der Kurzzeittherapie nicht aus.",
+     "Die zunächst umschrieben erscheinende Symptomatik erwies sich im Verlauf als Ausdruck überdauernder Schemata, deren Bearbeitung {Anzahl} weitere Sitzungen erfordert."],
+    ["Für die verbleibende Behandlung sind folgende Schritte vorgesehen: {Schritte}.",
+     "Ein Abschluss der Behandlung ohne Bearbeitung von {Thema} wäre mit einem erhöhten Rezidivrisiko verbunden."]
+   ]}
+ ]
+},
+
+/* ===================== F ===================== */
+{
+ id:"sf", tab:"Fortführung",
+ titel:"Bericht zum Fortführungsantrag",
+ hinweis:"Eigene Gliederung mit drei Punkten. Berichte fortlaufend nummerieren. Die Notwendigkeit der Fortführung muss aus dem Verlauf hergeleitet werden, nicht aus der Restsitzungszahl.",
+ gruppen:[
+  {name:"1. Verlauf seit dem letzten Bericht",
+   items:[
+    ["Seit dem letzten Bericht vom {Datum} wurden {Anzahl} Sitzungen durchgeführt.",
+     "Der Schwerpunkt lag auf {Schwerpunkte}; umgesetzt wurden {Interventionen}.",
+     "{{N}} hat {Anzahl} Expositionsübungen eigenständig durchgeführt und dabei die Erfahrung gemacht, dass {Erfahrung}."],
+    ["Ziel {Nummer} ({Ziel}) ist erreicht: {Beleg}.",
+     "Ziel {Nummer} ist teilweise erreicht; es besteht weiterhin {Restsymptomatik}.",
+     "Eine zwischenzeitliche Verschlechterung im {Zeitraum} im Kontext von {Ereignis} konnte durch {Intervention} aufgefangen werden."]
+   ]},
+  {name:"2. Aktuelle Diagnose und Befund",
+   items:[
+    ["Die Diagnose {ICD-Code} {Diagnosetext} besteht fort, nunmehr in {leicht / mittelgradig} ausgeprägter Form.",
+     "Der aktuelle psychische Befund zeigt gegenüber dem Vorbefund {Veränderung}.",
+     "Im {Instrument} vom {Datum} ergibt sich ein Wert von {Wert} gegenüber {Wert} zu Behandlungsbeginn."]
+   ]},
+  {name:"3. Begründung der Fortführung",
+   items:[
+    ["Die Fortführung ist erforderlich, um {Ziel}; ohne diesen Schritt ist von einem erhöhten Rezidivrisiko auszugehen.",
+     "Die erreichten Veränderungen sind noch nicht ausreichend stabil und alltagsgeneralisiert.",
+     "Neu hinzugekommen ist {Problembereich}, der eine Erweiterung der Behandlungsziele erforderlich macht."],
+    ["Für die verbleibenden Sitzungen ist geplant: {Plan}.",
+     "Der Therapieabschluss ist für {Zeitraum} vorgesehen; hierfür sind Rezidivprophylaxe, Notfallplan und eine schrittweise Reduktion der Sitzungsfrequenz eingeplant.",
+     "Nach Therapieende sind {weiterführende Maßnahmen} vorgesehen."]
+   ]}
+ ]
+},
+/* ===================== ERGÄNZUNGSBERICHT ===================== */
+{
+ id:"eb", tab:"Ergänzungsbericht",
+ titel:"Ergänzungsbericht beim Zweitgutachten",
+ hinweis:"Antragstellerin ist die Patientin, nur sie kann Widerspruch einlegen; die fachliche Begründung erfolgt im Ergänzungsbericht. Er wird in freier Form verfasst, eine vorgegebene Gliederung gibt es nicht. Einzureichen erst nach Aufforderung der Krankenkasse, im Umschlag PTV 8 zusammen mit allen Vorberichten, den bisherigen Stellungnahmen und den Durchschriften der PTV 2. Die Zweitbegutachtung hat abschließenden Charakter — was hier fehlt, lässt sich später nicht mehr nachreichen.",
+ gruppen:[
+  {name:"Einordnung und Bezugnahme",
+   items:[
+    ["Der vorliegende Ergänzungsbericht bezieht sich auf den Antrag vom {Datum}, den Bericht vom {Datum} sowie die gutachterliche Stellungnahme vom {Datum}."],
+    ["Die Stellungnahme führt als Grund der Nicht- bzw. Teil-Befürwortung {Begründung} an. Hierzu wird im Folgenden Stellung genommen."],
+    ["Seit dem Erstbericht haben sich folgende behandlungsrelevante Veränderungen ergeben: {Veränderungen}."]
+   ]},
+  {name:"Auseinandersetzung mit den Einwänden",
+   items:[
+    ["Der Einwand, {Einwand}, ist insoweit nachvollziehbar, als {Zugeständnis}. Ergänzend ist jedoch anzuführen: {Ergänzung}."],
+    ["Im Erstbericht wurde {Aspekt} aus Gründen der gebotenen Kürze nicht ausgeführt. Der Zusammenhang stellt sich folgendermaßen dar: {Darstellung}."],
+    ["Die Einschätzung, das Störungsmodell sei nicht ausreichend erkennbar, wird zum Anlass genommen, die Verhaltensanalyse präziser darzustellen: {Darstellung}."]
+   ]},
+  {name:"Nachgereichte Begründung",
+   items:[
+    ["Zur Diagnosestellung: Die Kriterien nach ICD-10 sind mit {Kriterien} erfüllt; die Schweregradeinschätzung stützt sich zusätzlich auf {Beleg}."],
+    ["Zur Ableitung des Kontingents: Die beantragten {Anzahl} Therapieeinheiten verteilen sich auf {Phasen mit Sitzungszahlen}; eine Reduktion würde {Konsequenz} bedeuten."],
+    ["Zur Prognose: Für eine ausreichend günstige Prognose sprechen {Faktoren}; die im Erstbericht genannten Veränderungshindernisse werden durch {Maßnahme} adressiert."],
+    ["Zur Differenzialindikation: Alternative Versorgungsformen ({Alternativen}) wurden geprüft und kommen aus folgenden Gründen nicht in Betracht: {Begründung}."]
+   ]},
+  {name:"Alternative Wege und Abschluss",
+   items:[
+    ["Sollte auch nach der Zweitbegutachtung keine Befürwortung im beantragten Umfang erfolgen, ist folgendes Vorgehen vorgesehen: {Vorgehen}."],
+    ["Für diesen Fall sind der Abschluss der Behandlung im bewilligten Rahmen mit Rezidivprophylaxe sowie die Anbindung an {Angebot} geplant."],
+    ["Hilfsweise wird ein reduziertes Kontingent von {Anzahl} Therapieeinheiten beantragt, mit dem folgende Ziele erreichbar erscheinen: {Ziele}."]
+   ]},
+  {name:"Fachlicher Austausch",
+   items:[
+    ["Für Rückfragen stehe ich unter {Kontakt} zur Verfügung; ein direkter fachlicher Austausch wird ausdrücklich angeboten."],
+    ["Die Krankenkassen und die Kassenärztliche Bundesvereinigung weisen auf die Möglichkeit des direkten Austauschs zwischen begutachtender und behandelnder Person bei unterschiedlichen Einschätzungen hin; hiervon wurde am {Datum} Gebrauch gemacht."]
+   ]}
+ ]
+},
+
+/* ===================== STÖRUNGSSPEZIFISCH ===================== */
+{
+ id:"st", tab:"Störungsspezifisch", typ:"stoer",
+ titel:"Störungsspezifische Bausteine",
+ hinweis:"Je Diagnose: Modellkern für Abschnitt 4, Aufrechterhaltung, Ziele, Methodenfolge und ein Argument für die Sitzungszahl. Die Leitlinienangabe je Diagnose nennt den Stand; abgelaufene Leitlinien sind als solche gekennzeichnet und begründen keine Aussage mehr allein.",
+ diagnosen:[
+
+ {code:"F32/F33", name:"Depressive Episode, rezidivierend",
+  ll:"NVL Unipolare Depression, 3. Auflage 2022, AWMF nvl-005, gültig bis 2027.",
+  gruppen:[
+   {name:"Modellkern",
+    items:[
+     ["Auf dem Boden von {Vulnerabilitätsfaktoren} und den Grundannahmen „{Grundannahme}“ führte {Auslöser} zu einem Verlust an positiver Verstärkung. Der daraus folgende Rückzug reduzierte die Zahl verstärkender Aktivitäten weiter, was Stimmung und Antrieb zusätzlich senkte."],
+     ["{{N}} erlebte über Jahre, dass Zuwendung an Leistung gebunden war; hieraus entwickelte sich die Grundannahme „{Grundannahme}“ und ein Verhaltensmuster der Selbstüberforderung mit ausbleibender Erholung."]
+    ]},
+   {name:"Aufrechterhaltung",
+    items:[
+     ["Aufrechterhaltend wirken der Verstärkerverlust durch Rückzug, depressive Grübelschleifen über {Inhalt} sowie die Selbstabwertung nach nicht erfüllten Ansprüchen."],
+     ["Die Reduktion von Anforderungen bringt kurzfristig Entlastung, verstärkt langfristig jedoch Selbstzweifel und Kompetenzverlusterleben."],
+     ["Schlafstörungen und Antriebsminderung bedingen sich wechselseitig und erschweren die Aufnahme von Aktivitäten."]
+    ]},
+   {name:"Ziele",
+    items:[
+     ["Ziel: Wiederaufbau positiver Aktivitäten auf {Anzahl} pro Woche, messbar über Wochenprotokoll.",
+      "Ziel: Reduktion des BDI-II-Summenwerts von {Wert} auf unter {Wert}.",
+      "Ziel: Aufbau eines alternativen Umgangs mit Grübeln, überprüfbar an {Indikator}."]
+    ]},
+   {name:"Methodenfolge",
+    items:[
+     ["Psychoedukation und Störungsmodell, Aktivitätenaufbau und Tagesstrukturierung, kognitive Umstrukturierung der depressiven Denkmuster, Bearbeitung der Grundannahme „{Grundannahme}“, Aufbau sozialer Kompetenzen, Rezidivprophylaxe mit Frühwarnzeichen und Notfallplan."],
+     ["Der Aktivitätenaufbau steht am Anfang, da bei ausgeprägter Antriebsminderung kognitive Arbeit zunächst nicht ausreichend zugänglich ist."]
+    ]},
+   {name:"Sitzungszahl und Prognose",
+    items:[
+     ["Die rezidivierende Verlaufsform mit {Anzahl} Episoden begründet den Umfang, da neben der Akutbehandlung die Bearbeitung überdauernder Schemata und eine tragfähige Rezidivprophylaxe erforderlich sind."],
+     ["Prognostisch günstig wirken die erhaltene Introspektionsfähigkeit und die vorhandene Partnerunterstützung; ungünstig wirkt die bislang bestehende Chronifizierung über {Dauer}."]
+    ]}
+  ]},
+
+ {code:"F41.0 / F40.01", name:"Panikstörung, Agoraphobie",
+  ll:"S3-Leitlinie Behandlung von Angststörungen, AWMF 051-028, Version 2.0 vom 06.04.2021; Gültigkeit bis 05.04.2026 abgelaufen, Überprüfung war für 04/2026 vorgesehen.",
+  gruppen:[
+   {name:"Modellkern",
+    items:[
+     ["Im Sinne des Teufelskreismodells nach Clark werden körperliche Missempfindungen ({Symptome}) katastrophisierend als Hinweis auf {befürchtete Katastrophe} bewertet. Die daraus folgende Angst verstärkt die körperlichen Symptome, die Aufmerksamkeit richtet sich zunehmend nach innen, und der Kreislauf schaukelt sich bis zur Panikattacke auf."],
+     ["Prädisponierend wirken {Vulnerabilität} sowie ein früh erworbenes Modell von Körpersymptomen als bedrohlich; auslösend war {Ereignis} in einer Phase erhöhter Belastung."]
+    ]},
+   {name:"Aufrechterhaltung",
+    items:[
+     ["Aufrechterhaltend wirken die Vermeidung agoraphobischer Situationen ({Situationen}), Sicherheitsverhalten ({Verhalten}) sowie die interozeptive Aufmerksamkeitslenkung."],
+     ["Durch das Mitführen von {Gegenstand} und die Begleitung durch {Person} bleibt die Erfahrung aus, dass die befürchtete Katastrophe auch ohne diese Maßnahmen ausbleibt."]
+    ]},
+   {name:"Ziele",
+    items:[
+     ["Ziel: Aufsuchen der Situationen {Situationen} ohne Begleitung und ohne Sicherheitsverhalten.",
+      "Ziel: Reduktion der Panikattacken von {Frequenz} auf {Frequenz}.",
+      "Ziel: Wiederherstellung des Aktionsradius, konkret {Alltagsziel}."]
+    ]},
+   {name:"Methodenfolge",
+    items:[
+     ["Psychoedukation und Teufelskreismodell, Symptomprovokation zur interozeptiven Exposition, Erstellung der Angsthierarchie, Exposition in vivo mit Reaktionsverhinderung, Abbau von Sicherheitsverhalten, kognitive Bearbeitung der Katastrophenbewertung, Rezidivprophylaxe."],
+     ["Die Expositionsübungen werden zunächst therapeutenbegleitet, im Verlauf selbstständig durchgeführt und protokolliert."]
+    ]},
+   {name:"Sitzungszahl und Prognose",
+    items:[
+     ["Der Umfang begründet sich aus der Zahl der zu bearbeitenden Vermeidungssituationen und der notwendigen Wiederholungshäufigkeit der Expositionen zur Habituation und Generalisierung."],
+     ["Prognostisch günstig ist die klare Symptomstruktur bei kurzer Erkrankungsdauer; die Bereitschaft zur Exposition wurde in der Probatorik geklärt und besteht."]
+    ]}
+  ]},
+
+ {code:"F41.1", name:"Generalisierte Angststörung",
+  ll:"S3-Leitlinie Behandlung von Angststörungen, AWMF 051-028, Version 2.0 vom 06.04.2021; Gültigkeit abgelaufen.",
+  gruppen:[
+   {name:"Modellkern",
+    items:[
+     ["Sorgen werden als Bewältigungsversuch eingesetzt: Die gedankliche Vorwegnahme möglicher Katastrophen soll Kontrolle herstellen und vor Überraschung schützen. Gleichzeitig bestehen Metasorgen über die Schädlichkeit und Unkontrollierbarkeit des Sorgens selbst."],
+     ["Prädisponierend wirken eine niedrige Unsicherheitstoleranz und die biografische Erfahrung, dass {Erfahrung}; hieraus leitet sich die Annahme ab, nur durch permanente Vorsorge Schaden abwenden zu können."]
+    ]},
+   {name:"Aufrechterhaltung",
+    items:[
+     ["Sorgenketten verhindern die emotionale Konfrontation mit dem befürchteten Kernszenario; das Ausbleiben der Katastrophe wird dem Sorgen zugeschrieben und bestätigt es scheinbar."],
+     ["Rückversicherung bei {Person}, exzessives Kontrollieren und Aufschieben von Entscheidungen halten die Unsicherheitsintoleranz aufrecht."]
+    ]},
+   {name:"Ziele",
+    items:[
+     ["Ziel: Reduktion der täglichen Sorgenzeit von {Dauer} auf {Dauer}, erfasst über Sorgentagebuch.",
+      "Ziel: Abbau von Rückversicherungsverhalten in den Bereichen {Bereiche}.",
+      "Ziel: Aufbau von Unsicherheitstoleranz, überprüfbar an {Verhaltensindikator}."]
+    ]},
+   {name:"Methodenfolge",
+    items:[
+     ["Psychoedukation zum Sorgenmodell, Sorgentagebuch und Unterscheidung lösbarer von unlösbaren Sorgen, Problemlösetraining, Sorgenexposition in sensu bis zum Kernszenario, Abbau von Rückversicherung, metakognitive Arbeit an den Sorgen über das Sorgen, Rezidivprophylaxe."]
+    ]},
+   {name:"Sitzungszahl und Prognose",
+    items:[
+     ["Der Umfang begründet sich aus der Generalisierung der Sorgeninhalte über mehrere Lebensbereiche sowie der Chronifizierung über {Dauer}; eine auf einzelne Situationen begrenzte Bearbeitung wäre nicht ausreichend."]
+    ]}
+  ]},
+
+ {code:"F40.1", name:"Soziale Angststörung",
+  ll:"S3-Leitlinie Behandlung von Angststörungen, AWMF 051-028, Version 2.0 vom 06.04.2021; Gültigkeit abgelaufen. Ergänzend: Evidenzbasierte Leitlinie zur Psychotherapie der Sozialen Angststörung, DGPs-Fachgruppe, Hogrefe 2010.",
+  gruppen:[
+   {name:"Modellkern",
+    items:[
+     ["In sozialen Situationen richtet sich die Aufmerksamkeit nach innen auf das eigene Erscheinungsbild; aus dieser Selbstbeobachtung entsteht ein negatives Selbstbild, das mit der befürchteten Außenwirkung gleichgesetzt wird ({Modell nach Clark und Wells})."],
+     ["Biografisch prägend waren {Erfahrungen}; hieraus entstand die Annahme „{Grundannahme}“ und ein überhöhter Standard an die eigene soziale Darstellung."]
+    ]},
+   {name:"Aufrechterhaltung",
+    items:[
+     ["Sicherheitsverhalten wie {Verhalten} bindet Aufmerksamkeit, beeinträchtigt das Gesprächsverhalten und verhindert die Erfahrung, auch ohne diese Maßnahmen akzeptiert zu werden."],
+     ["Antizipatorisches Sorgen vor und Nachgrübeln nach sozialen Situationen führen zu einer selektiven Erinnerung an vermeintliches Versagen."]
+    ]},
+   {name:"Ziele",
+    items:[
+     ["Ziel: Durchführung von {Situationen} ohne Sicherheitsverhalten.",
+      "Ziel: Reduktion des SPIN- bzw. LSAS-Werts von {Wert} auf {Wert}.",
+      "Ziel: Aufbau von {konkretes soziales Verhalten} im Arbeitskontext."]
+    ]},
+   {name:"Methodenfolge",
+    items:[
+     ["Psychoedukation und individuelles Modell, Aufmerksamkeitsumlenkung nach außen, Verhaltensexperimente mit und ohne Sicherheitsverhalten, Videofeedback zur Korrektur des verzerrten Selbstbilds, Exposition in realen sozialen Situationen, kognitive Arbeit an Standards und Bewertungsannahmen, Bearbeitung des Nachgrübelns."]
+    ]},
+   {name:"Sitzungszahl und Prognose",
+    items:[
+     ["Der Umfang ergibt sich aus dem frühen Beginn der Symptomatik, der Breite der betroffenen Situationen und dem Nachholbedarf an sozialen Lernerfahrungen."]
+    ]}
+  ]},
+
+ {code:"F42", name:"Zwangsstörung",
+  ll:"S3-Leitlinie Zwangsstörungen, AWMF 038-017, Stand 30.06.2022, gültig bis 29.06.2027.",
+  gruppen:[
+   {name:"Modellkern",
+    items:[
+     ["Aufdringliche Gedanken mit dem Inhalt {Inhalt} werden im Sinne einer übersteigerten Verantwortlichkeit bewertet: Das Auftreten des Gedankens wird mit dem Eintreten oder dem Verhindernmüssen des Ereignisses gleichgesetzt. Die daraus entstehende Anspannung wird durch {Zwangshandlung} kurzfristig reduziert."],
+     ["Prädisponierend wirken ein früh erworbenes überhöhtes Verantwortungserleben sowie {Faktoren}; auslösend war {Ereignis}."]
+    ]},
+   {name:"Aufrechterhaltung",
+    items:[
+     ["Die Zwangshandlung wird durch die unmittelbare Anspannungsreduktion negativ verstärkt; die Erfahrung, dass die Anspannung auch ohne Handlung abfällt, bleibt aus."],
+     ["Vermeidung auslösender Situationen, Rückversicherung bei {Person} sowie gedankliche Neutralisierungen wirken als verdeckte Zwangshandlungen und stabilisieren das System."]
+    ]},
+   {name:"Ziele",
+    items:[
+     ["Ziel: Reduktion der Zwangshandlungen von {Zeitaufwand} auf {Zeitaufwand} täglich.",
+      "Ziel: Y-BOCS-Reduktion von {Wert} auf {Wert}.",
+      "Ziel: Wiederaufnahme der vermiedenen Situationen {Situationen}."]
+    ]},
+   {name:"Methodenfolge",
+    items:[
+     ["Psychoedukation und individuelles Modell, Hierarchie der Auslösesituationen, Exposition mit Reaktionsmanagement, zunächst therapeutenbegleitet und im Lebensumfeld, anschließend eigenständig, Abbau verdeckter Neutralisierungen und Rückversicherungen, kognitive Arbeit an Verantwortlichkeit und Gedanken-Handlungs-Fusion, Einbezug von {Bezugsperson} zum Abbau der Mitbeteiligung am Zwangssystem."],
+     ["Die Exposition mit Reaktionsmanagement ist Kernbestandteil der Behandlung; Sitzungen im häuslichen Umfeld sind zur Generalisierung vorgesehen."]
+    ]},
+   {name:"Sitzungszahl und Prognose",
+    items:[
+     ["Der Umfang begründet sich aus dem für Expositionen erforderlichen Zeitbedarf, der Zahl der Symptombereiche und der Notwendigkeit, Angehörige aus dem Zwangssystem zu lösen."],
+     ["Erschwerend wirkt die Erkrankungsdauer von {Dauer} mit ausgeprägter Verankerung der Rituale im Tagesablauf."]
+    ]}
+  ]},
+
+ {code:"F43.1", name:"Posttraumatische Belastungsstörung",
+  ll:"S3-Leitlinie Posttraumatische Belastungsstörung, AWMF 155-001, Stand 30.04.2019; Gültigkeit bis 29.04.2024 abgelaufen, Leitlinie in Überarbeitung.",
+  gruppen:[
+   {name:"Modellkern",
+    items:[
+     ["Das Trauma vom {Zeitpunkt} wurde fragmentiert und überwiegend sensorisch enkodiert; es fehlt die zeitliche und kontextuelle Einordnung in das autobiografische Gedächtnis. Sensorische Auslöser führen daher zum Wiedererleben mit dem Charakter gegenwärtiger Bedrohung."],
+     ["Aufrechterhaltend wirken zusätzlich die traumabezogenen Bewertungen „{Bewertung}“ sowie die Veränderung des Selbst- und Weltbilds im Sinne von {Annahme}."]
+    ]},
+   {name:"Aufrechterhaltung",
+    items:[
+     ["Vermeidung von Erinnerungen, Orten und Gesprächen verhindert die Verarbeitung und die Korrektur der Bedrohungsbewertung.",
+      "Sicherheitsverhalten wie {Verhalten} erhält das Gefühl fortbestehender Gefahr aufrecht.",
+      "Substanzkonsum und Übererregung wirken wechselseitig verstärkend auf Schlafstörungen und Reizbarkeit."]
+    ]},
+   {name:"Ziele",
+    items:[
+     ["Ziel: Reduktion des Wiedererlebens, erfasst über {Instrument}, von {Wert} auf {Wert}.",
+      "Ziel: Wiederaufnahme vermiedener Alltagssituationen {Situationen}.",
+      "Ziel: Bearbeitung der traumabezogenen Bewertung „{Bewertung}“."]
+    ]},
+   {name:"Methodenfolge",
+    items:[
+     ["Stabilisierung und Psychoedukation, Aufbau von Fertigkeiten zur Spannungsregulation, traumafokussierte Bearbeitung mittels {Verfahren}, Bearbeitung der traumabezogenen Bewertungen, Diskrimination von Auslösern, Reintegration in vermiedene Lebensbereiche, Rückfallprophylaxe."],
+     ["Umfang und Zeitpunkt der traumafokussierten Arbeit werden an Stabilität, Dissoziationsneigung und äußerer Sicherheit ausgerichtet; die Indikationsprüfung erfolgt fortlaufend."]
+    ]},
+   {name:"Sitzungszahl und Prognose",
+    items:[
+     ["Der Umfang begründet sich aus der Notwendigkeit einer ausreichenden Stabilisierungsphase vor der traumafokussierten Arbeit sowie der {Anzahl} zu bearbeitenden Traumaereignisse."],
+     ["Ungünstig wirken die fortbestehende Belastung durch {Faktor} sowie laufende Verfahren; hierauf wird durch {Maßnahme} reagiert."]
+    ]}
+  ]},
+
+ {code:"F45", name:"Somatische Belastungsstörung, funktionelle Körperbeschwerden",
+  ll:"S3-Leitlinie Funktionelle Körperbeschwerden, AWMF 051-001, Stand 18.07.2018; Gültigkeit bis 17.07.2023 abgelaufen, Leitlinie in Überarbeitung.",
+  gruppen:[
+   {name:"Modellkern",
+    items:[
+     ["Körperliche Missempfindungen werden im Sinne eines Filtermodells verstärkt wahrgenommen: Erhöhte Aufmerksamkeitszuwendung senkt die Wahrnehmungsschwelle, die Bewertung als Krankheitszeichen erhöht Anspannung und damit die Symptomintensität."],
+     ["Prädisponierend wirken {Faktoren} sowie frühe Erfahrungen mit Krankheit als Weg zu Zuwendung oder Entlastung; auslösend war {Ereignis}."]
+    ]},
+   {name:"Aufrechterhaltung",
+    items:[
+     ["Wiederholte organmedizinische Abklärung führt zu kurzfristiger Entlastung und langfristiger Verunsicherung; das Muster wird intermittierend verstärkt."],
+     ["Schonverhalten führt zu Dekonditionierung und Zunahme der Beschwerden bei Belastung.",
+      "Das Ausbleiben eines organischen Befunds wird als Nicht-Ernstgenommenwerden erlebt, was den Abklärungsdruck erhöht."]
+    ]},
+   {name:"Ziele",
+    items:[
+     ["Ziel: Reduktion des Schonverhaltens und Aufbau körperlicher Aktivität auf {Umfang}.",
+      "Ziel: Reduktion von Rückversicherungsuntersuchungen auf vereinbarte Kontrolltermine.",
+      "Ziel: Erweiterung des Erklärungsmodells um psychophysiologische Zusammenhänge, ohne die Beschwerden infrage zu stellen."]
+    ]},
+   {name:"Methodenfolge",
+    items:[
+     ["Beschwerdetagebuch mit Situations- und Anspannungsbezug, gemeinsame Erarbeitung eines erweiterten Erklärungsmodells, Aufmerksamkeitslenkung, gestufter Aktivitätsaufbau, Abbau von Schon- und Rückversicherungsverhalten, Bearbeitung der Krankheitsangst, Abstimmung mit der hausärztlichen Behandlung über feste Kontrolltermine."],
+     ["Zentral ist zunächst der Aufbau eines tragfähigen Arbeitsbündnisses ohne Dethematisierung der körperlichen Beschwerden."]
+    ]},
+   {name:"Sitzungszahl und Prognose",
+    items:[
+     ["Der Umfang begründet sich aus der Chronifizierung über {Dauer}, der Zahl der Beschwerdebereiche und dem erforderlichen schrittweisen Aufbau des Erklärungsmodells."]
+    ]}
+  ]},
+
+ {code:"F51.0", name:"Insomnie",
+  ll:"S3-Leitlinie Insomnie bei Erwachsenen, AWMF 063-003, Version 2.0, Stand 13.11.2024, gültig bis 12.11.2029; kognitive Verhaltenstherapie für Insomnie als Behandlung erster Wahl.",
+  gruppen:[
+   {name:"Modellkern",
+    items:[
+     ["Nach dem Drei-Faktoren-Modell trafen prädisponierende Faktoren ({Faktoren}) auf den Auslöser {Ereignis}; aufrechterhaltend wirken inzwischen kompensatorische Verhaltensweisen wie verlängerte Bettzeiten und Tagschlaf."],
+     ["Das Bett ist zunehmend mit Wachheit und Anspannung assoziiert; die konditionierte Verknüpfung von Schlafumgebung und Grübeln hält die Einschlafstörung unabhängig vom ursprünglichen Auslöser aufrecht."]
+    ]},
+   {name:"Aufrechterhaltung",
+    items:[
+     ["Schlafbezogene Sorgen und die Kontrolle der Uhrzeit erhöhen die Anspannung im Bett.",
+      "Kompensation von Schlafmangel durch frühes Zubettgehen senkt den Schlafdruck und verlängert die Wachzeiten.",
+      "Die Annahme, {Stundenzahl} Stunden Schlaf seien zwingend erforderlich, erzeugt Erfolgsdruck beim Einschlafen."]
+    ]},
+   {name:"Ziele",
+    items:[
+     ["Ziel: Erhöhung der Schlafeffizienz auf über 85 Prozent, erfasst über Schlaftagebuch.",
+      "Ziel: Reduktion des ISI von {Wert} auf unter {Wert}.",
+      "Ziel: Beendigung des Hypnotikagebrauchs in Abstimmung mit {Stelle}."]
+    ]},
+   {name:"Methodenfolge",
+    items:[
+     ["Schlaftagebuch über zwei Wochen, Psychoedukation zur Schlafregulation, Stimuluskontrolle, Bettzeitrestriktion mit schrittweiser Ausweitung, Entspannungsverfahren, kognitive Arbeit an schlafbezogenen Überzeugungen, Rückfallprophylaxe."]
+    ]},
+   {name:"Sitzungszahl und Prognose",
+    items:[
+     ["Bei umschriebener Insomnie ohne relevante Komorbidität ist ein Kurzzeitkontingent in der Regel ausreichend; ein erweiterter Umfang ist nur bei {Begründung} erforderlich."]
+    ]}
+  ]},
+
+ {code:"F90", name:"ADHS im Erwachsenenalter",
+  ll:"S3-Leitlinie ADHS bei Kindern, Jugendlichen und Erwachsenen, AWMF 028-045, Stand 02.05.2017; Gültigkeit bis 01.05.2022 abgelaufen, Leitlinie in Überarbeitung.",
+  gruppen:[
+   {name:"Modellkern",
+    items:[
+     ["Auf der Grundlage einer neurobiologisch bedingten Beeinträchtigung exekutiver Funktionen ({Funktionen}) entstanden über die Lebensspanne wiederholte Misserfolgserfahrungen in {Bereiche}. Hieraus entwickelten sich sekundär die Grundannahme „{Grundannahme}“ sowie Vermeidungs- und Aufschiebeverhalten."],
+     ["Die Symptomatik besteht anamnestisch seit der Kindheit; Hinweise auf Beeinträchtigungen vor dem 12. Lebensjahr ergeben sich aus {Quelle}."]
+    ]},
+   {name:"Aufrechterhaltung",
+    items:[
+     ["Aufschieben führt zu kurzfristiger Entlastung, langfristig zu Zeitdruck, Fehlern und erneuter Selbstabwertung.",
+      "Fehlende äußere Struktur und ein hoher Anteil an Reizen im {Kontext} verstärken die Ablenkbarkeit.",
+      "Kompensationsversuche durch Mehrarbeit in den Abendstunden verschieben den Schlaf und verschärfen die Symptomatik am Folgetag."]
+    ]},
+   {name:"Ziele",
+    items:[
+     ["Ziel: Etablierung eines funktionierenden Aufgaben- und Terminsystems, überprüfbar an {Indikator}.",
+      "Ziel: Reduktion der Aufschiebehäufigkeit bei {Aufgabentyp}.",
+      "Ziel: Bearbeitung der sekundären Selbstabwertung."]
+    ]},
+   {name:"Methodenfolge",
+    items:[
+     ["Psychoedukation zum Störungsmodell, Aufbau externer Strukturierungshilfen, Zeit- und Aufgabenmanagement, Umgang mit Ablenkung und Reizreduktion, Emotionsregulation und Impulskontrolle, Bearbeitung der sekundären Selbstabwertung, Abstimmung mit der medikamentösen Behandlung durch {Stelle}."]
+    ]},
+   {name:"Sitzungszahl und Prognose",
+    items:[
+     ["Der Umfang begründet sich aus der Notwendigkeit, neue Strukturen über einen längeren Zeitraum einzuüben und zu stabilisieren, sowie aus der Bearbeitung der sekundären Folgeprobleme in {Bereiche}."]
+    ]}
+  ]},
+
+ {code:"F31", name:"Bipolare Störung",
+  ll:"S3-Leitlinie Diagnostik und Therapie Bipolarer Störungen, AWMF 038-019; Gültigkeit nach Registerangaben abgelaufen, Leitlinie in Überarbeitung. Psychotherapeutisch maßgeblich ergänzend: Meyer und Hautzinger; psychoedukative Ansätze nach Colom und Vieta; IPSRT nach Frank.",
+  gruppen:[
+   {name:"Modellkern",
+    items:[
+     ["Auf der Basis einer ausgeprägten biologischen Vulnerabilität führen Störungen des Schlaf-Wach-Rhythmus und sozialer Taktgeber ({Auslöser}) zu Prodromalsymptomen. Deren Bewertung und der Umgang mit ihnen entscheiden über die weitere Eskalation zur Episode."],
+     ["Die Behandlung ergänzt die pharmakologische Phasenprophylaxe durch {Stelle} und ersetzt sie nicht."]
+    ]},
+   {name:"Aufrechterhaltung",
+    items:[
+     ["In hypomanen Phasen werden Aktivitätssteigerung und Schlafverkürzung positiv erlebt und nicht als Warnzeichen bewertet.",
+      "Nach depressiven Phasen führt Überkompensation durch Aktivitätssteigerung zur erneuten Destabilisierung.",
+      "Unregelmäßige Tagesstruktur und Medikationspausen erhöhen das Rezidivrisiko."]
+    ]},
+   {name:"Ziele",
+    items:[
+     ["Ziel: Stabilisierung des Schlaf-Wach-Rhythmus mit festen Zeiten, erfasst über Stimmungs- und Aktivitätstagebuch.",
+      "Ziel: Identifikation individueller Frühwarnzeichen und Erarbeitung eines abgestuften Notfallplans.",
+      "Ziel: Bearbeitung der Krankheitsbewältigung und der Adhärenz zur Phasenprophylaxe."]
+    ]},
+   {name:"Methodenfolge",
+    items:[
+     ["Psychoedukation zum Erkrankungsmodell, Life-Chart und Stimmungsmonitoring, Stabilisierung sozialer Rhythmen, Frühwarnzeichen und Notfallplan mit Einbezug von {Bezugsperson}, Bearbeitung depressiver Kognitionen, Umgang mit Krankheitsfolgen und Stigmatisierung, Abstimmung mit der psychiatrischen Behandlung."]
+    ]},
+   {name:"Sitzungszahl und Prognose",
+    items:[
+     ["Der Umfang begründet sich aus der rezidivierenden Verlaufsform, der Notwendigkeit längerer Beobachtungszeiträume für das Stimmungsmonitoring und dem Einbezug von Bezugspersonen."]
+    ]}
+  ]}
+
+ ,
+ {code:"F43.2", name:"Anpassungsstörung",
+  ll:"Keine eigene deutsche S3-Leitlinie. Orientierung an den ICD-11-Kriterien (Präokkupation und Anpassungsversagen) sowie am Modell von Maercker und Kollegen; bei der Antragstellung ist die Abgrenzung zur depressiven Episode und zur PTBS besonders zu begründen.",
+  gruppen:[
+   {name:"Modellkern",
+    items:[
+     ["Das Ereignis {Belastung} überstieg die vorhandenen Bewältigungsmöglichkeiten. Prädisponierend wirkten {Faktoren}; die Belastung berührte den zentralen Lebensbereich {Bereich} und damit die Grundannahme „{Grundannahme}“."],
+     ["Im Vordergrund stehen eine anhaltende gedankliche Beschäftigung mit dem Ereignis sowie ein Anpassungsversagen in {Bereiche}, ohne dass die Kriterien einer depressiven Episode oder einer PTBS erfüllt wären."]
+    ]},
+   {name:"Aufrechterhaltung",
+    items:[
+     ["Grübeln über das Ereignis und über nicht getroffene Entscheidungen verhindert die Zuwendung zur Neuorientierung.",
+      "Rückzug aus {Bereich} reduziert korrigierende Erfahrungen und bestätigt das Erleben von Kontrollverlust.",
+      "Die Fortdauer der auslösenden Belastung ({Belastung}) begrenzt die Wirksamkeit rein intrapsychischer Veränderung; die Behandlung bezieht daher die Veränderung der äußeren Situation ein."]
+    ]},
+   {name:"Ziele",
+    items:[
+     ["Ziel: Wiederaufnahme der Funktionsfähigkeit in {Bereich}, überprüfbar an {Indikator}.",
+      "Ziel: Entwicklung und Umsetzung konkreter Schritte im Umgang mit {Belastung}.",
+      "Ziel: Reduktion der gedanklichen Beschäftigung mit dem Ereignis auf ein alltagsverträgliches Maß."]
+    ]},
+   {name:"Methodenfolge",
+    items:[
+     ["Psychoedukation und Einordnung der Reaktion, Problemlösetraining bezogen auf die fortbestehende Belastung, Aktivierung und Tagesstruktur, kognitive Arbeit an Bewertungen und Grübelschleifen, Aufbau sozialer Unterstützung, Rückfallprophylaxe."]
+    ]},
+   {name:"Sitzungszahl und Prognose",
+    items:[
+     ["Bei umschriebener Belastung und vorhandenen Ressourcen ist ein Kurzzeitkontingent in der Regel ausreichend; die Prognose ist bei Wegfall oder Bearbeitbarkeit des Stressors günstig."],
+     ["Ein erweiterter Umfang ist nur bei fortbestehender Belastung, Chronifizierungstendenz oder relevanter Vorbelastung durch {Faktor} zu begründen."]
+    ]}
+  ]},
+
+ {code:"F50.0", name:"Anorexia nervosa",
+  ll:"S3-Leitlinie Diagnostik und Therapie der Essstörungen, AWMF 051-026, Stand 31.05.2018; Gültigkeit bis 30.05.2023 abgelaufen, Leitlinie in Überarbeitung, Patientenleitlinie 2024 aktualisiert. Störungsmodell ergänzend nach Fairburn (transdiagnostisches Modell, CBT-E).",
+  gruppen:[
+   {name:"Modellkern",
+    items:[
+     ["Zentral ist die Überbewertung von Figur, Gewicht und deren Kontrolle für den Selbstwert. Auf dem Boden von {Prädisposition} und der Grundannahme „{Grundannahme}“ wurde die Kontrolle über das Essverhalten zum vorrangigen Mittel der Selbstwertregulation."],
+     ["Auslösend wirkte {Ereignis}; die anfängliche soziale Bestätigung der Gewichtsabnahme wirkte positiv verstärkend."]
+    ]},
+   {name:"Aufrechterhaltung",
+    items:[
+     ["Die Mangelernährung selbst wirkt aufrechterhaltend über kognitive Einengung, Affektveränderung und sozialen Rückzug; die somatischen Folgen verstärken die Fixierung auf Essen und Gewicht.",
+      "Kontroll- und Vermeidungsverhalten bezogen auf Figur und Gewicht reduziert kurzfristig Anspannung und erhält die Überbewertung aufrecht.",
+      "Rückzug aus gemeinsamen Mahlzeiten und sozialen Situationen verhindert korrigierende Erfahrungen."]
+    ]},
+   {name:"Ziele",
+    items:[
+     ["Ziel: Normalisierung des Essverhaltens mit regelmäßigen Mahlzeiten, begleitet durch die somatische Kontrolle bei {Stelle}.",
+      "Ziel: Reduktion der Überbewertung von Figur und Gewicht, überprüfbar über {Instrument}.",
+      "Ziel: Aufbau alternativer Quellen der Selbstwertregulation in {Bereiche}."]
+    ]},
+   {name:"Methodenfolge",
+    items:[
+     ["Aufbau der Behandlungsmotivation und des Arbeitsbündnisses, Psychoedukation und individuelles Modell, Normalisierung des Essverhaltens in Abstimmung mit der somatischen Mitbehandlung, Arbeit an der Überbewertung von Figur und Gewicht, Aufbau alternativer Selbstwertquellen, Bearbeitung interpersoneller Themen, Rückfallprophylaxe mit Frühwarnzeichen."],
+     ["Die Behandlung erfolgt in enger Abstimmung mit {somatische Stelle}; vereinbart sind regelmäßige Gewichts- und Laborkontrollen sowie Kriterien für eine stationäre Weiterbehandlung."]
+    ]},
+   {name:"Sitzungszahl und Prognose",
+    items:[
+     ["Der Umfang begründet sich aus der Erkrankungsdauer von {Dauer}, der erforderlichen engmaschigen Begleitung der Ernährungsnormalisierung und der anschließenden Arbeit an den aufrechterhaltenden Bedingungen."],
+     ["Ambulante Behandlung ist indiziert, solange {Kriterien} erfüllt sind; die Kriterien für eine Intensivierung des Settings wurden mit {{d}} schriftlich vereinbart."]
+    ]}
+  ]},
+
+ {code:"F50.2 / F50.4", name:"Bulimia nervosa, Binge-Eating-Störung",
+  ll:"S3-Leitlinie Diagnostik und Therapie der Essstörungen, AWMF 051-026, Stand 31.05.2018; Gültigkeit abgelaufen, in Überarbeitung. Ergänzend Fairburn, CBT-E.",
+  gruppen:[
+   {name:"Modellkern",
+    items:[
+     ["Die Überbewertung von Figur und Gewicht führt zu rigiden Regeln für das Essverhalten. Deren Verletzung wird im Sinne eines Alles-oder-nichts-Denkens als Versagen bewertet, worauf der Kontrollverlust über das Essen folgt; die anschließende Scham verstärkt die Regeln erneut."],
+     ["Prädisponierend wirken {Faktoren} sowie die Grundannahme „{Grundannahme}“; auslösend war {Ereignis}."]
+    ]},
+   {name:"Aufrechterhaltung",
+    items:[
+     ["Restriktive Regeln zwischen den Episoden erzeugen physiologischen und psychologischen Mangel und erhöhen die Wahrscheinlichkeit des nächsten Kontrollverlusts.",
+      "Die Episoden dienen kurzfristig der Spannungs- und Affektregulation und werden dadurch negativ verstärkt.",
+      "Heimlichkeit und Rückzug verhindern soziale Unterstützung und erhalten die Scham aufrecht."]
+    ]},
+   {name:"Ziele",
+    items:[
+     ["Ziel: Reduktion der Episoden von {Frequenz} auf {Frequenz}, erfasst über Essprotokoll.",
+      "Ziel: Etablierung eines regelmäßigen Mahlzeitenrhythmus ohne restriktive Regeln.",
+      "Ziel: Aufbau alternativer Strategien der Affektregulation für {Situationen}."]
+    ]},
+   {name:"Methodenfolge",
+    items:[
+     ["Selbstbeobachtung mit Essprotokoll, Psychoedukation und individuelles Modell, Etablierung regelmäßiger Mahlzeiten, Abbau restriktiver Regeln, Arbeit an der Überbewertung von Figur und Gewicht, Aufbau von Fertigkeiten zur Affektregulation, Bearbeitung interpersoneller Auslöser, Rückfallprophylaxe."]
+    ]},
+   {name:"Sitzungszahl und Prognose",
+    items:[
+     ["Der Umfang begründet sich aus der Verankerung der Symptomatik über {Dauer} und der Notwendigkeit, nach der Symptomreduktion die zugrunde liegende Selbstwertproblematik zu bearbeiten."]
+    ]}
+  ]},
+
+ {code:"F10.2", name:"Alkoholbezogene Störung",
+  ll:"S3-Leitlinie Screening, Diagnostik und Behandlung alkoholbezogener Störungen, AWMF 076-001, Stand 01.01.2021; Gültigkeit bis 31.12.2025 abgelaufen, Leitlinie in Überarbeitung. Vor der Antragstellung die Anforderungen der Psychotherapie-Richtlinie an Suchtmittelfreiheit in der geltenden Fassung prüfen und im Bericht ausdrücklich adressieren.",
+  gruppen:[
+   {name:"Modellkern",
+    items:[
+     ["Der Konsum diente zunächst der Regulation von {Zustand}; die unmittelbare Spannungsreduktion wirkte negativ verstärkend. Prädisponierend wirkten {Faktoren} einschließlich der familiären Konsummodelle."],
+     ["Mit zunehmender Toleranzentwicklung verschob sich die Funktion des Konsums von der positiven Verstärkung zur Vermeidung von Entzugserleben und Anspannung."]
+    ]},
+   {name:"Aufrechterhaltung",
+    items:[
+     ["Konsum in Reaktion auf {Auslöser} verhindert den Aufbau alternativer Bewältigungsstrategien.",
+      "Konditionierte Hinweisreize ({Reize}) lösen Craving aus; das Nachgeben reduziert es kurzfristig und verstärkt den Mechanismus.",
+      "Soziale Folgen des Konsums erhöhen die Belastung und damit den Konsumdruck."]
+    ]},
+   {name:"Ziele",
+    items:[
+     ["Ziel: Aufrechterhaltung der Abstinenz seit {Datum}, dokumentiert über {Nachweis}.",
+      "Ziel: Aufbau alternativer Strategien für die Auslösesituationen {Situationen}.",
+      "Ziel: Erarbeitung eines Notfallplans für Risikosituationen und Rückfallgefährdung."]
+    ]},
+   {name:"Methodenfolge",
+    items:[
+     ["Klärung der Behandlungsvoraussetzungen und der Abstinenzsituation, Psychoedukation und Funktionsanalyse des Konsums, Aufbau alternativer Verstärker und Tagesstruktur, Umgang mit Craving und Hinweisreizen, Ablehnungstraining, Rückfallprophylaxe nach dem Modell der Rückfallkette, Anbindung an {Suchtberatung oder Selbsthilfe}."],
+     ["Die Behandlung setzt die Anbindung an {Stelle} und die Abstimmung über Kontrollen und Krisenvorgehen voraus."]
+    ]},
+   {name:"Sitzungszahl und Prognose",
+    items:[
+     ["Der Umfang begründet sich aus der Notwendigkeit, neben der Abstinenzstabilisierung die komorbide {Diagnose} zu behandeln, die funktional mit dem Konsum verknüpft ist."],
+     ["Prognostisch relevant sind die bestehende Abstinenzdauer, die soziale Einbindung und die Bereitschaft zur parallelen Nutzung von {Angebot}."]
+    ]}
+  ]},
+
+ {code:"F60 allgemein", name:"Persönlichkeitsstörungen, allgemeine Bausteine",
+  ll:"Eine deutsche S3-Leitlinie liegt nur für die Borderline-Persönlichkeitsstörung vor (AWMF 038-015). Für die übrigen Persönlichkeitsstörungen existiert keine entsprechende Leitlinie; die Behandlungsplanung stützt sich auf Schematherapie (Young, Arntz), klärungsorientierte Psychotherapie (Sachse) und kognitive Therapie der Persönlichkeitsstörungen (Beck, Davis, Freeman). ICD-11 stellt auf Schweregrad und Merkmalsdomänen um; für die Antragstellung gilt weiterhin ICD-10-GM.",
+  gruppen:[
+   {name:"Diagnostische Begründung",
+    items:[
+     ["Die Kriterien der allgemeinen Persönlichkeitsstörung sind erfüllt: überdauerndes, situationsübergreifendes Muster seit dem frühen Erwachsenenalter mit deutlichem Leidensdruck und Beeinträchtigung in {Bereiche}; die Abgrenzung von einer Zustandsveränderung im Rahmen der {Achse-I-Diagnose} erfolgte über {Vorgehen}."],
+     ["Die Diagnose stützt sich auf {Instrument}, die Verhaltensbeobachtung über {Anzahl} Sitzungen und fremdanamnestische Angaben von {Quelle}."],
+     ["Es liegt eine Akzentuierung ohne Störungswertigkeit vor; die Merkmale werden im Behandlungsplan berücksichtigt, ohne als eigene Diagnose vergeben zu werden."]
+    ]},
+   {name:"Modellkern und Beziehungsgestaltung",
+    items:[
+     ["Aus den biografischen Erfahrungen {Erfahrungen} entwickelten sich die Schemata {Schemata} und die Bewältigungsmodi {Modi}, die im Herkunftskontext funktional waren und heute in {Situationen} zu Beeinträchtigungen führen."],
+     ["Für die therapeutische Beziehung ergibt sich hieraus: {Bedürfnis} wird komplementär beantwortet, {Vermeidungsplan} wird nicht bedient, Beziehungstests werden benannt statt beantwortet."],
+     ["Die Behandlung der komorbiden {Achse-I-Diagnose} bleibt symptomorientiert im Vordergrund; die Persönlichkeitsproblematik bestimmt die Beziehungsgestaltung und den zeitlichen Rahmen."]
+    ]},
+   {name:"Antragstechnische Hinweise",
+    items:[
+     ["Die Persönlichkeitsstörung wird als Kontextdiagnose geführt und begründet den erhöhten Behandlungsumfang; behandlungsleitend ist {Diagnose}."],
+     ["Der erhöhte Umfang ergibt sich aus der Überdauerung des Musters, der Zahl betroffener Lebensbereiche und dem erforderlichen längeren Aufbau einer tragfähigen Arbeitsbeziehung."]
+    ]}
+  ]},
+
+ {code:"F60.31", name:"Emotional instabile Persönlichkeitsstörung, Borderline-Typ",
+  ll:"S3-Leitlinie Borderline-Persönlichkeitsstörung, AWMF 038-015, Stand 14.11.2022, gültig bis 31.05.2026; Gültigkeit nach Registerangaben abgelaufen. Störungsspezifische Verfahren mit Wirksamkeitsbelegen sind unter anderem DBT, MBT, Schematherapie und TFP.",
+  gruppen:[
+   {name:"Modellkern",
+    items:[
+     ["Nach dem biosozialen Modell traf eine konstitutionell erhöhte emotionale Vulnerabilität auf ein invalidierendes Umfeld. In der Folge konnten Fertigkeiten zur Emotionsregulation nicht ausreichend erworben werden; Anspannungszustände werden durch {Verhalten} beendet."],
+     ["Prädisponierend wirkten {Erfahrungen}; hieraus entwickelten sich die Annahmen „{Grundannahme über sich}“ und „{Grundannahme über andere}“."]
+    ]},
+   {name:"Aufrechterhaltung",
+    items:[
+     ["Dysfunktionale Spannungsregulation wirkt unmittelbar entlastend und wird dadurch stark negativ verstärkt; alternative Fertigkeiten bleiben unerprobt.",
+      "Wechsel zwischen Nähewunsch und Rückzug führt zu instabilen Beziehungen, die das Verlassenheitsschema bestätigen.",
+      "Invalidierende Reaktionen des Umfelds auf Krisen verstärken Anspannung und Selbstabwertung."]
+    ]},
+   {name:"Ziele",
+    items:[
+     ["Ziel: Aufbau alternativer Fertigkeiten zur Spannungsregulation, überprüfbar an {Indikator}.",
+      "Ziel: Reduktion krisenhafter Zuspitzungen und der damit verbundenen Behandlungsabbrüche.",
+      "Ziel: Stabilisierung in {Bereich} entsprechend der vereinbarten Zielhierarchie."]
+    ]},
+   {name:"Methodenfolge",
+    items:[
+     ["Behandlungsvereinbarung und Zielhierarchie, Krisen- und Notfallplan, Verhaltensanalysen problematischer Situationen, Aufbau von Fertigkeiten zur Emotionsregulation und Stresstoleranz, Arbeit an Schemata und Modi, Bearbeitung interpersoneller Muster, Übertragung in den Alltag, Rückfallprophylaxe."],
+     ["Die Behandlung folgt einer festen Zielhierarchie; Verhaltensweisen mit Gefährdungsrelevanz haben Vorrang vor therapieschädigendem Verhalten und dieses vor lebensqualitätsbezogenen Zielen."]
+    ]},
+   {name:"Sitzungszahl und Prognose",
+    items:[
+     ["Der Umfang begründet sich aus der Überdauerung des Musters, dem Fertigkeitenaufbau über längere Zeiträume und der Notwendigkeit, Krisen im Behandlungsverlauf aufzufangen, ohne die Behandlung abzubrechen."],
+     ["Prognostisch günstig wirken die bestehende Behandlungsmotivation und die Bereitschaft zur Einhaltung der Behandlungsvereinbarung."]
+    ]}
+  ]},
+
+ {code:"F60.6", name:"Ängstlich vermeidende Persönlichkeitsstörung",
+  ll:"Keine spezifische deutsche Leitlinie. Orientierung an Schematherapie (Young, Arntz) und kognitiver Therapie der Persönlichkeitsstörungen; differenzialdiagnostisch ist die Abgrenzung zur generalisierten sozialen Angststörung zu begründen.",
+  gruppen:[
+   {name:"Modellkern",
+    items:[
+     ["Auf der Grundlage wiederholter Erfahrungen von {Erfahrungen} entstanden die Schemata Unzulänglichkeit und soziale Isolation. Nähe wird gewünscht, aber wegen der erwarteten Ablehnung vermieden."],
+     ["Das Muster ist situationsübergreifend und besteht seit dem frühen Erwachsenenalter; es beschränkt sich nicht auf Leistungs- oder Bewertungssituationen."]
+    ]},
+   {name:"Aufrechterhaltung",
+    items:[
+     ["Vermeidung von Nähe und beruflichen Anforderungen verhindert korrigierende Erfahrungen und bestätigt die Annahme eigener Unzulänglichkeit.",
+      "Rückzug bei ersten Anzeichen möglicher Kritik verhindert die Erfahrung, dass Beziehungen Konflikte überstehen."]
+    ]},
+   {name:"Ziele",
+    items:[
+     ["Ziel: Aufbau von {Anzahl} tragfähigen sozialen Kontakten außerhalb des Kernhaushalts.",
+      "Ziel: Umsetzung beruflicher Schritte, konkret {Schritt}.",
+      "Ziel: Bearbeitung des Schemas Unzulänglichkeit, überprüfbar an {Indikator}."]
+    ]},
+   {name:"Methodenfolge",
+    items:[
+     ["Aufbau einer tragfähigen Beziehung mit begrenzter Nachbeelterung, Psychoedukation und Schemamodell, Verhaltensexperimente in sozialen Situationen, gestufte Exposition gegenüber Nähe und Bewertung, imaginative Arbeit an prägenden Erfahrungen, Kompetenzaufbau, Transfer in Beruf und Privatleben."]
+    ]},
+   {name:"Sitzungszahl und Prognose",
+    items:[
+     ["Der Umfang begründet sich aus der Überdauerung des Vermeidungsmusters über alle Lebensbereiche und dem langsamen Aufbau von Vertrauen in der therapeutischen Beziehung."]
+    ]}
+  ]},
+
+ {code:"F60.5", name:"Anankastische Persönlichkeitsstörung",
+  ll:"Keine spezifische deutsche Leitlinie. Orientierung an Schematherapie und kognitiver Therapie der Persönlichkeitsstörungen; abzugrenzen von der Zwangsstörung (AWMF 038-017), da dort Zwangsgedanken als ich-dyston erlebt werden.",
+  gruppen:[
+   {name:"Modellkern",
+    items:[
+     ["Prägend war ein Umfeld, in dem Anerkennung an Fehlerfreiheit und Leistung gebunden war. Hieraus entwickelten sich die Schemata unerbittliche Ansprüche und Bestrafungsneigung sowie die Annahme „{Grundannahme}“."],
+     ["Anders als bei der Zwangsstörung werden Perfektionismus und Kontrollbedürfnis als ich-synton erlebt und nicht als störend bewertet; Leidensdruck entsteht über die Folgen in {Bereiche}."]
+    ]},
+   {name:"Aufrechterhaltung",
+    items:[
+     ["Übermäßige Gründlichkeit führt zu Zeitverlust und Aufschieben, das Ergebnis bestätigt die Annahme, noch sorgfältiger arbeiten zu müssen.",
+      "Delegieren wird vermieden, wodurch die Belastung steigt und Erholungszeiten entfallen.",
+      "Rigide Regeln in Beziehungen erzeugen Konflikte, die als Bestätigung der eigenen Standards gedeutet werden."]
+    ]},
+   {name:"Ziele",
+    items:[
+     ["Ziel: Reduktion des Zeitaufwands für {Tätigkeit} auf ein vereinbartes Maß.",
+      "Ziel: Aufbau von Erholungszeiten mit {Frequenz}.",
+      "Ziel: Flexibilisierung der Standards, überprüfbar an {Indikator}."]
+    ]},
+   {name:"Methodenfolge",
+    items:[
+     ["Klärung des Leidensdrucks und der Änderungsmotivation, Kosten-Nutzen-Analyse der Standards, Verhaltensexperimente mit bewusst reduzierter Gründlichkeit, Zeitbegrenzung für Aufgaben, Arbeit an den Schemata unerbittliche Ansprüche und Bestrafungsneigung, Aufbau von Erholung und Emotionswahrnehmung."]
+    ]},
+   {name:"Sitzungszahl und Prognose",
+    items:[
+     ["Der Umfang begründet sich aus der Ich-Syntonie des Musters und der daraus folgenden längeren Phase der Motivationsklärung vor der eigentlichen Veränderungsarbeit."]
+    ]}
+  ]},
+
+ {code:"F60.7", name:"Abhängige Persönlichkeitsstörung",
+  ll:"Keine spezifische deutsche Leitlinie. Orientierung an Schematherapie und kognitiver Therapie der Persönlichkeitsstörungen.",
+  gruppen:[
+   {name:"Modellkern",
+    items:[
+     ["Auf der Grundlage von {Erfahrungen} entstanden die Schemata Abhängigkeit und Unterwerfung sowie die Annahme, eigenständige Entscheidungen nicht bewältigen zu können."],
+     ["Eigene Bedürfnisse werden zurückgestellt, um die Beziehung zu {Person} nicht zu gefährden; hieraus resultieren Überlastung und unterdrückter Ärger."]
+    ]},
+   {name:"Aufrechterhaltung",
+    items:[
+     ["Das Abgeben von Entscheidungen vermeidet kurzfristig Unsicherheit und verhindert langfristig Kompetenzerfahrungen.",
+      "Anpassung an die Erwartungen anderer wird durch Zuwendung verstärkt und stabilisiert das Unterwerfungsmuster.",
+      "Das Umfeld übernimmt Aufgaben und bestätigt dadurch unbeabsichtigt die Annahme eigener Unfähigkeit."]
+    ]},
+   {name:"Ziele",
+    items:[
+     ["Ziel: Eigenständige Umsetzung von {Entscheidungen bzw. Aufgaben}.",
+      "Ziel: Äußern eigener Bedürfnisse und Ablehnung in {Situationen}.",
+      "Ziel: Aufbau von Aktivitäten unabhängig von {Person}."]
+    ]},
+   {name:"Methodenfolge",
+    items:[
+     ["Psychoedukation und Schemamodell, Aufbau von Entscheidungskompetenz in gestuften Schritten, Selbstsicherheits- und Abgrenzungstraining mit Rollenspielen, Arbeit an den Schemata Abhängigkeit und Unterwerfung, Einbezug von {Bezugsperson} zur Veränderung der Interaktionsmuster, Rückfallprophylaxe."],
+     ["Die therapeutische Beziehung wird bewusst so gestaltet, dass Ratschläge begrenzt und eigene Lösungen {{g}} gefordert werden, um das Muster nicht in der Therapie zu wiederholen."]
+    ]},
+   {name:"Sitzungszahl und Prognose",
+    items:[
+     ["Der Umfang begründet sich aus dem schrittweisen Aufbau von Autonomieerfahrungen und der Notwendigkeit, Rückschritte bei Konflikten im Umfeld aufzufangen."]
+    ]}
+  ]},
+
+ {code:"F60.8", name:"Narzisstische Persönlichkeitsstörung",
+  ll:"Keine spezifische deutsche Leitlinie; in ICD-10-GM unter sonstige spezifische Persönlichkeitsstörungen kodiert. Orientierung an Schematherapie (Modusmodell) und klärungsorientierter Psychotherapie (Sachse).",
+  gruppen:[
+   {name:"Modellkern",
+    items:[
+     ["Hinter dem Selbsterhöhungsmodus liegt ein Schema von Unzulänglichkeit und emotionaler Entbehrung. Anerkennung von außen dient der Regulation eines instabilen Selbstwerts; Kränkungen lösen Scham und in der Folge Abwertung oder Rückzug aus."],
+     ["Biografisch prägend war {Erfahrung}: Wertschätzung war an Leistung und Außenwirkung gebunden, emotionale Zuwendung blieb aus."]
+    ]},
+   {name:"Aufrechterhaltung",
+    items:[
+     ["Selbstdarstellung und Abwertung anderer stabilisieren kurzfristig den Selbstwert und führen langfristig zu Beziehungsabbrüchen, die das Entbehrungsschema bestätigen.",
+      "Vermeidung von Situationen mit Versagensrisiko verhindert korrigierende Erfahrungen.",
+      "Der Behandlungsanlass liegt häufig in den Folgen ({Folgen}), nicht im Muster selbst, was die Änderungsmotivation begrenzt."]
+    ]},
+   {name:"Ziele",
+    items:[
+     ["Ziel: Bearbeitung der Folgeprobleme in {Bereich}.",
+      "Ziel: Aufbau alternativer Formen der Selbstwertregulation.",
+      "Ziel: Verbesserung der Beziehungsgestaltung, überprüfbar an {Indikator}."]
+    ]},
+   {name:"Methodenfolge",
+    items:[
+     ["Aufbau des Arbeitsbündnisses über die {{V}} benannten Anliegen, Klärung der Funktion des Selbsterhöhungsmodus, Verhaltensanalysen von Kränkungssituationen, Arbeit am Scham- und Unzulänglichkeitsschema, Aufbau von Emotionswahrnehmung und Perspektivübernahme, Transfer in konkrete Beziehungen."],
+     ["Die Beziehungsgestaltung ist zunächst komplementär zum Anerkennungsbedürfnis, um eine Bearbeitung des dahinterliegenden Schemas überhaupt zu ermöglichen; Konfrontation erfolgt erst auf tragfähiger Basis."]
+    ]},
+   {name:"Sitzungszahl und Prognose",
+    items:[
+     ["Der Umfang begründet sich aus der längeren Phase der Motivations- und Auftragsklärung sowie der Bearbeitung des zugrunde liegenden Schemas."],
+     ["Prognostisch eingeschränkt günstig; begrenzend wirken die geringe Ich-Dystonie des Musters und das Abbruchrisiko nach Kränkungen in der Behandlung, worauf durch {Maßnahme} reagiert wird."]
+    ]}
+  ]}
+
+ ]
+},
+/* ===================== FALLKONZEPTION ===================== */
+{
+ id:"fk", tab:"Fallkonzeption",
+ titel:"Fallkonzeption, interne Fassung",
+ hinweis:"Nicht für den Bericht, sondern für Akte und Supervision. Hier darf stehen, was im Bericht nicht hingehört: Hypothesen, Unsicherheiten, Beziehungsdynamik, eigene Reaktionen.",
+ gruppen:[
+  {name:"Problemliste und Priorisierung",
+   items:[
+    ["Problembereich 1: {Beschreibung}. Auftretenshäufigkeit {Frequenz}, Leidensdruck {Wert}/10, Veränderungsmotivation {Wert}/10.",
+     "Die Priorisierung erfolgt nach Leidensdruck, Veränderbarkeit und funktionaler Zentralität im Bedingungsgefüge.",
+     "Bearbeitungsreihenfolge: {Reihenfolge}, da {Begründung}."]
+   ]},
+  {name:"Hypothesen und offene Fragen",
+   items:[
+    ["Arbeitshypothese: {Hypothese}. Prüfbar an {Indikator}. Alternativhypothese: {Alternative}.",
+     "Ungeklärt ist bislang {Frage}; hierzu ist {Vorgehen} vorgesehen.",
+     "Widersprüchlich erscheint {Widerspruch}; dies wird in der Supervision am {Datum} eingebracht."]
+   ]},
+  {name:"Therapieauftrag und Motivation",
+   items:[
+    ["Der Auftrag {{g}} lautet {Auftrag}; mein Auftrag an {{a}} lautet {Gegenauftrag}.",
+     "Die Motivationslage entspricht dem Stadium {Absichtslosigkeit / Absichtsbildung / Vorbereitung / Handlung}; daraus folgt {Konsequenz für das Vorgehen}.",
+     "Es besteht eine Diskrepanz zwischen geäußertem Ziel {Ziel} und beobachtetem Verhalten {Verhalten}; diese wird offen thematisiert."]
+   ]},
+  {name:"Beziehungsgestaltung",
+   items:[
+    ["Aus der Plananalyse ergibt sich für die Beziehungsgestaltung: {Bedürfnis} komplementär bedienen, {Vermeidungsplan} nicht bedienen.",
+     "In der Interaktion zeigt sich {Muster}; eigene Reaktion darauf: {Reaktion}. Konsequenz für das Vorgehen: {Konsequenz}.",
+     "Zu erwartende Beziehungstests: {Test}. Geplanter Umgang: {Umgang}."]
+   ]},
+  {name:"Verlaufsplanung",
+   items:[
+    ["Messplan: {Instrument} zu Beginn, nach {Intervall} Sitzungen und zum Abschluss; {Instrument} sitzungsbegleitend.",
+     "Supervision nach je {Anzahl} Therapieeinheiten bei {Supervisorin}.",
+     "Abbruchrisiko: {Einschätzung}. Frühwarnzeichen: {Zeichen}. Geplante Reaktion: {Reaktion}."]
+   ]}
+ ]
+},
+
+/* ===================== WORTFELDER ===================== */
+{
+ id:"wf", tab:"Wortfelder", typ:"wort",
+ titel:"Wortfelder",
+ hinweis:"Tippen kopiert das Wort. Gedacht für den Moment, in dem die Sache klar ist und nur das Wort fehlt. Die Suche oben durchsucht alle Felder gleichzeitig.",
+ felder:[
+  {n:"Referatsverben, Patientenangaben",
+   s:"Für alles, was {{n}} oder {{n}} sagt. Absteigend nach Distanz der Darstellung.",
+   w:["berichtet","schildert","gibt an","beschreibt","führt aus","benennt","erlebt","nimmt wahr","äußert","formuliert","erinnert","datiert","führt zurück auf","stellt dar","schreibt zu","bringt in Zusammenhang mit","räumt ein","relativiert","bagatellisiert","betont","hebt hervor","wiederholt","verneint","verneint glaubhaft","kann nicht benennen","bleibt vage","weicht aus","korrigiert sich","ergänzt auf Nachfrage","bestätigt auf Nachfrage"]},
+  {n:"Eigene Beobachtung",
+   s:"Für den Befund und das Interaktionsverhalten. Nicht mit den Referatsverben mischen.",
+   w:["imponiert","zeigt sich","fällt auf","wirkt","erscheint","lässt sich beobachten","ist erkennbar","stellt sich dar","ergibt sich","zeigt im Gespräch","reagiert mit","gestaltet sich","bleibt bestehen","ist nachvollziehbar","ist gut explorierbar","ist nicht sicher beurteilbar"]},
+  {n:"Schweregrad und Intensität",
+   s:"",
+   w:["leicht ausgeprägt","gering ausgeprägt","mäßig","mittelgradig","deutlich","ausgeprägt","erheblich","schwer","massiv","subklinisch","im Grenzbereich","unterschwellig","in wechselnder Ausprägung","fluktuierend","durchgehend","anhaltend","überdauernd","zeitweise vollständig remittiert"]},
+  {n:"Häufigkeit",
+   s:"",
+   w:["einmalig","vereinzelt","gelegentlich","wiederholt","regelmäßig","mehrfach wöchentlich","nahezu täglich","täglich","mehrfach täglich","situationsgebunden","unvorhersehbar","anfallsartig","episodisch","phasenweise","in Belastungsphasen gehäuft","seltener geworden"]},
+  {n:"Zeitverlauf",
+   s:"",
+   w:["schleichend entwickelt","akut aufgetreten","seit der Kindheit bestehend","erstmals im Alter von","rezidivierend","chronifiziert","progredient","remittierend","im Verlauf zunehmend","zuletzt deutlich verstärkt","mit freien Intervallen","seit dem Erstauftreten unverändert","seit {Zeitraum} bestehend","im zeitlichen Zusammenhang mit"]},
+  {n:"Affekt und Stimmung",
+   s:"Befundsprache. Auf {{d}}blatt gehört stattdessen Alltagssprache.",
+   w:["gedrückt","subdepressiv","niedergeschlagen","freudlos","anhedon","ängstlich getönt","angespannt","gereizt","dysphor","ratlos","affektlabil","affektarm","nivelliert","in der Schwingungsfähigkeit eingeschränkt","emotional gut erreichbar","moduliert adäquat","parathym","insuffizienzerleben","hoffnungslos","schuldhaft verarbeitend","emotional distanziert","gut schwingungsfähig"]},
+  {n:"Antrieb und Psychomotorik",
+   s:"",
+   w:["antriebsgemindert","antriebsarm","initiativlos","erschöpft","rasch ermüdbar","antriebsgesteigert","psychomotorisch unruhig","agitiert","verlangsamt","sitzt ruhig","fahrig","angespannte Sitzhaltung","nestelt","Blickkontakt reduziert","Blickkontakt erhalten","mimisch wenig moduliert"]},
+  {n:"Denken und Wahrnehmung",
+   s:"Befundteil. Nur beschreiben, was tatsächlich erhoben wurde.",
+   w:["formaler Gedankengang geordnet","eingeengt","grüblerisch","umständlich","weitschweifig","ideenflüchtig","gedankliche Verlangsamung","inhaltlich kein Anhalt für Wahn","keine Ich-Störungen","keine Sinnestäuschungen","überwertige Ideen","Zwangsgedanken ich-dyston erlebt","Befürchtungen realitätsnah","Realitätsprüfung erhalten","szenisches Wiedererleben","Flashbacks","dissoziative Phänomene"]},
+  {n:"Orientierung, Kognition, Bewusstsein",
+   s:"",
+   w:["wach","bewusstseinsklar","zu allen Qualitäten orientiert","zeitlich orientiert","situativ orientiert","Auffassung ungestört","Konzentration reduziert","Aufmerksamkeitsschwankungen","Merkfähigkeit orientierend unauffällig","mnestisch unauffällig","Kurzzeitgedächtnis eingeschränkt","kognitive Verlangsamung","orientierende Prüfung ohne Auffälligkeiten"]},
+  {n:"Suizidalität und Sicherheit",
+   s:"Nur Zustandsbeschreibung und Absprachen; keine Methodenangaben im Bericht.",
+   w:["von Suizidalität distanziert","glaubhaft distanziert","passive Todeswünsche","ohne Handlungsdruck","ohne Absicht","ohne Planung","ohne Vorbereitungshandlungen","absprachefähig","bündnisfähig","Notfallplan erarbeitet","Krisendienst bekannt","engmaschige Verlaufskontrolle vereinbart","kein Anhalt für Fremdgefährdung","Erfassung zu Sitzungsbeginn vereinbart","anamnestisch früherer Suizidversuch"]},
+  {n:"Kognitionen und Grundannahmen",
+   s:"Für Abschnitt 4. Grundannahmen möglichst im Wortlaut {{g}} zitieren.",
+   w:["dysfunktionale Grundannahme","konditionale Annahme","automatischer Gedanke","kognitive Verzerrung","Katastrophisieren","Gedankenlesen","Übergeneralisierung","dichotomes Denken","selektive Abstraktion","Personalisierung","Sollte-Aussagen","emotionale Beweisführung","Grübeln","Sorgenketten","Nachgrübeln","gedankliche Vorwegnahme","Selbstabwertung","Perfektionsanspruch","Kontrollüberzeugung","Hilflosigkeitserwartung","Verantwortungsüberschätzung","Gedanken-Handlungs-Fusion","Unsicherheitsintoleranz","negatives Selbstbild"]},
+  {n:"Schemata und Modi",
+   s:"Nur verwenden, wenn schematherapeutisch gearbeitet wird und die Begriffe im Text eingelöst werden.",
+   w:["Verlassenheitsschema","Misstrauensschema","emotionale Entbehrung","Unzulänglichkeit und Scham","soziale Isolation","Abhängigkeit","Unterwerfung","Selbstaufopferung","unerbittliche Ansprüche","Bestrafungsneigung","Anspruchshaltung","vermeidender Bewältigungsmodus","überkompensierender Modus","erwachsener Modus","verletzbarer Kindmodus","Elternmodus","Plananalyse","Oberplan","Vermeidungsplan"]},
+  {n:"Emotionsregulation",
+   s:"",
+   w:["Spannungsregulation","Affekttoleranz","Emotionswahrnehmung","Emotionsdifferenzierung","Skills","Stresstoleranz","Anspannungskurve","Frühwarnzeichen","Impulskontrolle","Ärgerregulation","Schamerleben","Schuldgefühle","Alexithymie","Rückzug als Regulationsstrategie","funktionale Alternative"]},
+  {n:"Vermeidung und Sicherheitsverhalten",
+   s:"",
+   w:["Vermeidungsverhalten","subtile Vermeidung","kognitive Vermeidung","Sicherheitsverhalten","Rückversicherung","Kontrollverhalten","Neutralisieren","Ablenkungsstrategien","Aufschiebeverhalten","sozialer Rückzug","Reizabschirmung","Flucht aus der Situation","Schonverhalten","antizipatorische Angst","Erwartungsangst","Begleitperson als Sicherheitssignal"]},
+  {n:"Lerntheoretische Begriffe",
+   s:"Für die Verhaltensanalyse. Nur verwenden, wenn im Text auch der Mechanismus beschrieben wird.",
+   w:["negative Verstärkung","positive Verstärkung","intermittierende Verstärkung","Löschungsresistenz","operante Konditionierung","klassische Konditionierung","Reizgeneralisierung","Diskriminationslernen","Modelllernen","stellvertretende Verstärkung","Verstärkerverlust","Kontingenz","Zwei-Faktoren-Modell","Habituation","korrigierende Erfahrung","Reaktionsverhinderung","Stimuluskontrolle","Verhaltensdefizit","Verhaltensexzess","funktionale Äquivalenz"]},
+  {n:"Konnektoren für die Verhaltensanalyse",
+   s:"Die Verbindungsstücke, an denen der Bericht meistens hakt.",
+   w:["vor diesem Hintergrund","daraus resultierend","hieraus leitet sich ab","in der Folge","dadurch bedingt","auf dem Boden von","im Zusammenspiel mit","hierdurch wird aufrechterhalten","dies führt dazu, dass","entsprechend","folgerichtig","damit verbunden ist","wechselseitig verstärkend","als Konsequenz hieraus","dies erklärt, weshalb","kurzfristig demgegenüber langfristig","dem entgegen steht","zusätzlich verstärkt durch","was wiederum","vermittelt über"]},
+  {n:"Biografie und Familienklima",
+   s:"Nur aufnehmen, was im Bedingungsmodell wieder gebraucht wird.",
+   w:["Familienklima","emotionale Verfügbarkeit","Bindungserfahrungen","Parentifizierung","Leistungsorientierung der Familie","inkonsistentes Erziehungsverhalten","invalidierendes Umfeld","hohe Erwartungshaltung","Trennung der Eltern im Alter von","Umzüge und Schulwechsel","Position in der Geschwisterreihe","prägende Erfahrung","fehlende Lernmöglichkeiten für","frühe Verantwortungsübernahme","soziale Einbindung in der Jugend"]},
+  {n:"Beziehungsgestaltung und Interaktion",
+   s:"Für die interne Fallkonzeption; im Bericht nur, wo es die Planung trägt.",
+   w:["tragfähiges Arbeitsbündnis","Beziehungsgestaltung komplementär","motivorientierte Beziehungsgestaltung","Beziehungstest","Rollenübernahme","Klärungsprozess","Konfrontation auf tragfähiger Basis","begrenzte Nachbeelterung","Transparenz über das Vorgehen","gemeinsame Zielabstimmung","Umgang mit Widerstand","Abbruchrisiko","Reinszenierung in der Therapie"]},
+  {n:"Diagnosesicherheit und Vorbehalt",
+   s:"Kennzeichnung von Unsicherheit. Lieber hier präzise sein als im Nachhinein korrigieren.",
+   w:["gesichert","hochwahrscheinlich","am ehesten vereinbar mit","Verdacht auf","differenzialdiagnostisch abzugrenzen","vorläufig","im Verlauf zu überprüfen","nicht sicher beurteilbar","anamnestisch berichtet","fremdanamnestisch bestätigt","aktenkundig","nach eigenen Angaben","Kriterien vollständig erfüllt","Zeitkriterium erfüllt","Ausschlusskriterien geprüft","Akzentuierung ohne Störungswertigkeit"]},
+  {n:"Testbefunde formulieren",
+   s:"",
+   w:["Summenwert","Rohwert","T-Wert","Prozentrang","Cut-off überschritten","im klinisch auffälligen Bereich","im Normbereich","im Grenzbereich","deutlich erhöht","unauffällig","Skala","Subskala","Reliable Change Index","Verlaufsmessung","Vergleich zum Ausgangswert","Selbstbeurteilungsverfahren","Fremdbeurteilungsverfahren","strukturiertes Interview"]},
+  {n:"Funktionsniveau und Teilhabe",
+   s:"",
+   w:["Alltagsbewältigung","Tagesstruktur","Arbeitsfähigkeit","Leistungsfähigkeit","Konzentration am Arbeitsplatz","Aktionsradius","Mobilität","soziale Teilhabe","Rückzug aus sozialen Kontakten","Haushaltsführung","Versorgung der Kinder","Freizeitaktivitäten","Belastbarkeit","Krankschreibungstage","Stufenweise Wiedereingliederung"]},
+  {n:"Ressourcen",
+   s:"",
+   w:["Introspektionsfähigkeit","Reflexionsfähigkeit","Veränderungsbereitschaft","Selbstwirksamkeitserwartung","Durchhaltevermögen","Humor","Bildungsressourcen","berufliche Kompetenz","tragfähige Partnerschaft","verlässliches soziales Netz","Strukturierungsfähigkeit","kreative Ausdrucksmöglichkeiten","körperliche Aktivität","spirituelle Bindung","frühere Bewältigungserfahrungen","Hilfesuchverhalten","Verbindlichkeit bei Terminen"]},
+  {n:"Motivation und Prognose",
+   s:"",
+   w:["hohe Eigenmotivation","intrinsisch motiviert","ambivalent","extern motiviert","Leidensdruck ausgeprägt","Veränderungsbereitschaft erkennbar","Umstellungsfähigkeit erhalten","prognostisch günstig","prognostisch eingeschränkt","Krankheitsgewinn","sekundärer Krankheitsgewinn","Chronifizierungsgrad","Alltagsgeneralisierung","Rezidivrisiko","Therapieadhärenz","inneres Veränderungshindernis","äußeres Veränderungshindernis","laufendes Rentenverfahren"]},
+  {n:"Behandlungstechniken",
+   s:"Nur nennen, was tatsächlich geplant ist, und jeweils mit Indikationsbegründung.",
+   w:["Psychoedukation","Aktivitätenaufbau","Tagesstrukturierung","Selbstbeobachtungsprotokoll","kognitive Umstrukturierung","Spaltentechnik","sokratischer Dialog","Verhaltensexperiment","Exposition in vivo","Exposition in sensu","interozeptive Exposition","Reaktionsverhinderung","Angsthierarchie","Rollenspiel","Videofeedback","Kompetenztraining","Problemlösetraining","Achtsamkeitsübungen","Entspannungsverfahren","Bettzeitrestriktion","Stimuluskontrolle","Kontingenzmanagement","Imagination","Imagery Rescripting","Stuhldialog","Biografiearbeit","Life-Chart","Skillstraining","Notfallplan","Rezidivprophylaxe","Angehörigengespräch","Hausaufgaben zwischen den Sitzungen"]},
+  {n:"Zielformulierung",
+   s:"Verben, mit denen Ziele überprüfbar werden.",
+   w:["reduzieren auf","erhöhen auf","aufbauen","etablieren","stabilisieren","generalisieren","flexibilisieren","abbauen","wiederaufnehmen","eigenständig durchführen","überprüfbar an","erfasst über","messbar über","im Alltag umsetzen","aufrechterhalten über"]},
+  {n:"Verlauf und Fortführung",
+   s:"Für Umwandlungs- und Fortführungsberichte.",
+   w:["Teilremission","deutliche Besserung","Symptomreduktion","Stagnation","zwischenzeitliche Verschlechterung","Symptomverschiebung","Zielerreichung teilweise","Ziel erreicht","neu hinzugekommen","noch nicht alltagsgeneralisiert","Stabilisierung ausstehend","Therapieabschluss geplant für","Ausschleichen der Frequenz","Katamnesetermin","weiterführende Maßnahmen"]},
+  {n:"Antrags- und Verfahrensvokabular",
+   s:"",
+   w:["Psychotherapeutische Sprechstunde","probatorische Sitzungen","Konsiliarbericht","Kurzzeittherapie","Langzeittherapie","Umwandlungsantrag","Fortführungsantrag","Kontingent","Sitzungsfrequenz","Einzelsetting","Gruppensetting","Kombinationsbehandlung","Bezugspersonenstunden","Schweigepflichtentbindung","Rezidivprophylaxe","Akutbehandlung"]},
+  {n:"Somatik und Medikation",
+   s:"",
+   w:["somatisch abgeklärt","kein organisches Korrelat","hausärztlich behandelt","fachärztlich eingestellt","Phasenprophylaxe","Bedarfsmedikation","Dosisanpassung","Adhärenz zur Medikation","Abstimmung mit der behandelnden Praxis","regelmäßige Laborkontrollen","Gewichtskontrolle vereinbart","Entzugsbehandlung abgeschlossen","Abstinenz seit"]}
+ ]
+},
+
+/* ===================== REGELN ===================== */
+{
+ id:"rg", tab:"Prüfliste",
+ titel:"Prüfliste vor dem Absenden",
+ hinweis:"Geordnet nach den Bewertungsbereichen, die eine gutachterliche Stellungnahme abdecken muss: Diagnose, verfahrensspezifisches Modell, Versorgungsform, Behandlungsplanung, Ableitung des Kontingents, Prognose. Bei Nicht- oder Teil-Befürwortung muss zu jedem dieser Bereiche eine Begründung erfolgen — entsprechend sollte der Bericht zu jedem Bereich etwas hergeben. Quelle der Systematik: Handbuch Gutachtertätigkeit für die ambulante Psychotherapie, KBV, Juli 2024.",
+ gruppen:[
+  {name:"Diagnose",
+   items:[
+    ["Fällt die Diagnose in den Indikationsbereich der Psychotherapie-Richtlinie?"],
+    ["Passt der psychopathologische Befund zur gestellten Diagnose, und ist das Verhältnis zum subjektiven Erleben nachvollziehbar?"],
+    ["Sind eingesetzte Testverfahren angemessen gewählt und stützen sie den Befund tatsächlich?"],
+    ["Sind somatische und psychiatrische Anteile sowie Komorbiditäten berücksichtigt und zum Behandlungsplan in Beziehung gesetzt?"],
+    ["Ist eine mögliche Suchtproblematik abgeklärt und im Bericht benannt?"],
+    ["Sind Vorbehandlungen mit ihrem Ergebnis genannt?"],
+    ["Ist die Differenzialdiagnostik erörtert, wo sie sich aufdrängt?"]
+   ]},
+  {name:"Verhaltensanalyse",
+   items:[
+    ["Ist das Bedingungsmodell hinsichtlich Entstehung, Aufrechterhaltung sowie sozialem und lebensgeschichtlichem Kontext schlüssig dargestellt?"],
+    ["Sind Mikro- und Makroanalyse als die verfahrensspezifischen Elemente der Verhaltenstherapie beide erkennbar?"],
+    ["Sind die Annahmen über die Ursachen am geschilderten Material überprüfbar, oder bleiben sie behauptet?"],
+    ["Bei Einbezug von Bezugspersonen: Ist deren Anteil an Entstehung und Aufrechterhaltung reflektiert?"]
+   ]},
+  {name:"Versorgungsform",
+   items:[
+    ["Ist erkennbar, dass eine krankheitswertige Störung vorliegt und die Behandlung auf Heilung, Linderung oder Verhütung der Verschlimmerung zielt?"],
+    ["Ist begründet, warum ambulante Richtlinienpsychotherapie die passende Versorgungsform ist und nicht ein anderes Angebot?"],
+    ["Ist geprüft und benannt, ob eine Kombination mit anderen Angeboten, etwa medikamentöser Behandlung, sinnvoll ist?"],
+    ["Sind Chronifizierung, sozialmedizinische Lage und soziales Gefüge in der Wahl der Versorgungsform berücksichtigt?"],
+    ["Bleibt die Zielsetzung innerhalb der Grenzen der vertragsärztlichen Versorgung, oder zielt sie auf Persönlichkeitsentwicklung ohne Krankheitsbezug?"]
+   ]},
+  {name:"Behandlungsplanung",
+   items:[
+    ["Lässt sich das methodische Vorgehen eindeutig der Verhaltenstherapie zuordnen?"],
+    ["Stehen die Therapieziele nachvollziehbar mit der Verhaltensanalyse in Zusammenhang?"],
+    ["Ist die Perspektive der Patientin oder des Patienten bei der Zielbildung erkennbar berücksichtigt?"],
+    ["Sind Methoden und Interventionen konkret beschrieben und den Zielen zugeordnet, statt nur aufgezählt?"],
+    ["Sind Leitlinienempfehlungen als anerkannter Erkenntnisstand berücksichtigt oder Abweichungen begründet?"],
+    ["Ist die Kooperation mit anderen Berufsgruppen geplant, wo der Fall es nahelegt?"],
+    ["Bei Einbezug von Bezugspersonen: Ist benannt, was damit erreicht werden soll? Wird bei erhöhtem Umfang die therapeutische Gebotenheit begründet?"],
+    ["Bei Umwandlung oder Fortführung: Ist der bisherige Verlauf ausgewertet und nicht nur beschrieben?"]
+   ]},
+  {name:"Ableitung des Kontingents",
+   items:[
+    ["Folgt der beantragte Umfang erkennbar aus Indikation, Verhaltensanalyse und Behandlungsplan?"],
+    ["Wäre das Ziel auch mit einem kleineren Kontingent erreichbar? Wenn nicht, steht die Begründung im Bericht?"],
+    ["Entspricht die Zahl der geplanten Methoden und Phasen dem beantragten Umfang, oder klaffen beide auseinander?"],
+    ["Sind Anrechnungen berücksichtigt: 12 Einheiten bei Umwandlung aus KZT 1, 24 aus KZT 2, sowie vorausgegangene Akutbehandlung?"]
+   ]},
+  {name:"Prognose",
+   items:[
+    ["Lassen Vorgehen und Planung einen ausreichenden Behandlungserfolg erwarten, und steht das so im Text?"],
+    ["Sind Motivation, Motivierbarkeit und Umstellungsfähigkeit belegt, nicht nur behauptet?"],
+    ["Sind äußere Veränderungshindernisse benannt und wird der Umgang mit ihnen beschrieben?"],
+    ["Sind frühere Behandlungen prognostisch eingeordnet, gerade bei wiederkehrenden Beziehungsmustern?"]
+   ]},
+  {name:"Sprache und Form",
+   items:[
+    ["Sind Patientenangaben und eigene Befunderhebung sprachlich klar getrennt?"],
+    ["Steht irgendwo eine Deutung ohne Beleg aus dem geschilderten Material?"],
+    ["Liegt der Umfang bei etwa zwei bis drei Seiten normaler Schriftgröße? Kürzer oder länger ist zulässig, wenn die Relevanz es trägt."],
+    ["Sind Datum, Unterschrift und Praxisstempel gesetzt?"],
+    ["Ist der Bericht nach den Gliederungspunkten 1 bis 6 beziehungsweise 7 aufgebaut, bei Fortführungsanträgen nach den Punkten 1 bis 3?"],
+    ["Pseudonymisierung durchgehend geprüft, auch in beigefügten Befundkopien?"],
+    ["Enthält der Umschlag PTV 8 alles Erforderliche: Bericht, Durchschrift PTV 2, Konsiliarbericht sofern erforderlich, gegebenenfalls ergänzende Befundberichte?"],
+    ["Bei mehreren Fortführungsberichten: fortlaufende Nummerierung vergeben?"]
+   ]}
+ ]
+}
+
+];
+
+/* ============================================================
+   LOGIK
+   ============================================================ */
+var korb = [];
+var aktiv = DATEN[0].id;
+var aktiveDiag = 0;
+var genus = "w";
+var suchTimer = null;
+
+/* ---------- Speicher, fällt lautlos zurück ---------- */
+var Speicher = {
+  lesen: function(k){ try { return window.localStorage.getItem(k); } catch(e){ return null; } },
+  schreiben: function(k,v){ try { window.localStorage.setItem(k,v); } catch(e){} },
+  loeschen: function(k){ try { window.localStorage.removeItem(k); } catch(e){} }
+};
+
+/* ---------- Fallwerte ---------- */
+var fallwerte = {};
+var fallSpeichern = false;
+var fallTimer = null;
+var KONSTANT = ["Anrede und Kürzel","Alter","Beruf","Stunden","Familienstand","Kinderzahl",
+  "Wohn- und Familiensituation","Bezugsperson","Person","Stelle","überweisende Stelle","Quelle",
+  "ICD-Code","Diagnosetext","Diagnose","Leitsymptom","Leitsymptome","Grundannahme",
+  "Grundannahme über sich","Grundannahme über andere","Instrument","Verfahren","Präparat","Dosis",
+  "Supervisorin","Klinik","Fachrichtung","somatische Stelle","Suchtberatung oder Selbsthilfe"];
+function fallSichern(){
+  if(fallSpeichern) Speicher.schreiben("fb.fall", JSON.stringify(fallwerte));
+  else Speicher.loeschen("fb.fall");
+  Speicher.schreiben("fb.fallSpeichern", fallSpeichern ? "1" : "0");
+}
+function fallLaden(){
+  fallSpeichern = Speicher.lesen("fb.fallSpeichern") === "1";
+  if(!fallSpeichern) return;
+  var r = Speicher.lesen("fb.fall");
+  if(!r) return;
+  try { var o = JSON.parse(r); if(o && typeof o === "object") fallwerte = o; } catch(e){}
+}
+function fallZahl(){
+  var n = 0;
+  for(var k in fallwerte){ if(fallwerte[k] && fallwerte[k].length) n++; }
+  return n;
+}
+var phCache = null;
+function phInventar(){
+  if(phCache) return phCache;
+  var zaehler = {};
+  var sammle = function(t){
+    var m, r = /\{([^{}]+)\}/g, s2 = aufloesen(t);
+    while((m = r.exec(s2))) zaehler[m[1]] = (zaehler[m[1]] || 0) + 1;
+  };
+  for(var i=0;i<DATEN.length;i++){
+    var a = DATEN[i];
+    if(a.typ === "wort"){ for(var f=0;f<a.felder.length;f++){ for(var w=0;w<a.felder[f].w.length;w++) sammle(a.felder[f].w[w]); } continue; }
+    if(a.typ === "stoer"){
+      for(var d=0;d<a.diagnosen.length;d++){
+        for(var g1=0;g1<a.diagnosen[d].gruppen.length;g1++){
+          var gr1 = a.diagnosen[d].gruppen[g1];
+          for(var it1=0;it1<gr1.items.length;it1++){ for(var v1=0;v1<gr1.items[it1].length;v1++) sammle(gr1.items[it1][v1]); }
+        }
+      }
+      continue;
+    }
+    for(var g=0;g<a.gruppen.length;g++){
+      for(var it=0;it<a.gruppen[g].items.length;it++){
+        for(var v=0;v<a.gruppen[g].items[it].length;v++) sammle(a.gruppen[g].items[it][v]);
+      }
+    }
+  }
+  var liste = [];
+  for(var k in zaehler) liste.push({name:k, n:zaehler[k]});
+  liste.sort(function(x,y){ return y.n - x.n || (x.name < y.name ? -1 : 1); });
+  phCache = liste;
+  return liste;
+}
+
+/* ---------- Genus ---------- */
+var GENUS = {
+  w: {N:"Die Patientin", n:"die Patientin", d:"der Patientin", g:"der Patientin", a:"die Patientin", V:"von der Patientin"},
+  m: {N:"Der Patient",  n:"der Patient",  d:"dem Patienten", g:"des Patienten", a:"den Patienten", V:"vom Patienten"}
+};
+function aufloesen(s){
+  var t = GENUS[genus];
+  return String(s).replace(/\{\{([NndgaV])\}\}/g, function(m,k){ return t[k]; });
+}
+
+/* ---------- Textaufbereitung ---------- */
+function roh(s){
+  return aufloesen(s).replace(/\{([^}]+)\}/g, function(m,p){
+    return (fallwerte[p] && fallwerte[p].length) ? fallwerte[p] : "[" + p + "]";
+  });
+}
+function escPlain(s){
+  return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+function esc(s){
+  return aufloesen(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
+function regexSicher(s){ return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
+function hervorheben(h, q){
+  if(!q) return h;
+  try { return h.replace(new RegExp("(" + regexSicher(q) + ")", "gi"), "<mark>$1</mark>"); }
+  catch(e){ return h; }
+}
+function alsHtml(s, q){
+  var h = hervorheben(esc(s), q);
+  return h.replace(/\{([^}]+)\}/g, function(m,p){
+    var name = p.replace(/<\/?mark>/g, "");
+    if(fallwerte[name] && fallwerte[name].length){
+      return "<span class=\"gefuellt\" data-ph=\"" + escPlain(name) + "\" title=\"Platzhalter: " + escPlain(name) + "\">" +
+        escPlain(fallwerte[name]) + "</span>";
+    }
+    return "<span class=\"p\" data-ph=\"" + escPlain(name) + "\">[" + p + "]</span>";
+  });
+}
+
+/* ---------- Rückmeldung ---------- */
+function meldung(t){
+  var m = document.getElementById("meldung");
+  m.textContent = t; m.classList.add("an");
+  clearTimeout(m._t);
+  m._t = setTimeout(function(){ m.classList.remove("an"); }, 1300);
+}
+function kopieren(text, knopf){
+  var fertig = function(){
+    if(knopf){ knopf.classList.add("fertig"); setTimeout(function(){ knopf.classList.remove("fertig"); }, 900); }
+    meldung("Kopiert");
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(fertig, function(){ ersatzKopie(text, fertig); });
+  } else { ersatzKopie(text, fertig); }
+}
+function ersatzKopie(text, fertig){
+  var ta = document.createElement("textarea");
+  ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+  document.body.appendChild(ta); ta.select();
+  try { document.execCommand("copy"); fertig(); } catch(e){ meldung("Kopieren nicht möglich"); }
+  document.body.removeChild(ta);
+}
+
+/* ---------- Reiter ---------- */
+function reiterBauen(){
+  var n = document.getElementById("reiter");
+  var h = [];
+  for(var i=0;i<DATEN.length;i++){
+    h.push("<button data-id=\"" + DATEN[i].id + "\">" + esc(DATEN[i].tab) + "</button>");
+  }
+  n.innerHTML = h.join("");
+  var b = n.getElementsByTagName("button");
+  for(var j=0;j<b.length;j++){
+    b[j].addEventListener("click", function(){
+      aktiv = this.getAttribute("data-id");
+      document.getElementById("suche").value = "";
+      zeichnen();
+      window.scrollTo(0,0);
+    });
+  }
+}
+
+function passt(text, q){ return aufloesen(text).toLowerCase().indexOf(q) !== -1; }
+
+function werkzeuge(text){
+  var r = roh(text);
+  return "<div class=\"werkzeuge\">" +
+    "<button class=\"mini\" data-kopie=\"" + esc(r) + "\" title=\"Kopieren\">⧉</button>" +
+    "<button class=\"mini\" data-sammeln=\"" + esc(r) + "\" title=\"In die Sammlung\">＋</button>" +
+    "</div>";
+}
+
+/* ---------- Inhalt ---------- */
+function zeichnen(){
+  var q = document.getElementById("suche").value.trim().toLowerCase();
+  var ziel = document.getElementById("inhalt");
+  var h = [];
+  var treffer = 0;
+
+  var kn = document.getElementById("reiter").getElementsByTagName("button");
+  for(var k=0;k<kn.length;k++){
+    kn[k].className = (kn[k].getAttribute("data-id") === aktiv && !q) ? "aktiv" : "";
+  }
+
+  for(var i=0;i<DATEN.length;i++){
+    var abs = DATEN[i];
+    if(!q && abs.id !== aktiv) continue;
+    var teil = [];
+
+    if(abs.typ === "stoer"){
+      var wahl = [];
+      for(var d0=0; d0<abs.diagnosen.length; d0++){
+        wahl.push("<button class=\"chip diag" + (d0===aktiveDiag && !q ? " gewaehlt" : "") + "\" data-diag=\"" + d0 + "\">" +
+          esc(abs.diagnosen[d0].name) + "</button>");
+      }
+      var etwas = false;
+      var dalles = [];
+      for(var d=0; d<abs.diagnosen.length; d++){
+        var dg = abs.diagnosen[d];
+        if(!q && d !== aktiveDiag) continue;
+        var dteil = [];
+        for(var dg2=0; dg2<dg.gruppen.length; dg2++){
+          var dgr = dg.gruppen[dg2];
+          var dkarten = [];
+          for(var di=0; di<dgr.items.length; di++){
+            var dz = [];
+            for(var dv=0; dv<dgr.items[di].length; dv++){
+              var dt = dgr.items[di][dv];
+              if(q && !passt(dt,q) && !passt(dg.name,q) && !passt(dg.code,q) && !passt(dgr.name,q)) continue;
+              dz.push("<div class=\"variante\"><div class=\"txt\">" + alsHtml(dt,q) + "</div>" + werkzeuge(dt) + "</div>");
+            }
+            if(!dz.length) continue;
+            treffer += dz.length;
+            dkarten.push("<div class=\"karte\">" + dz.join("") + "</div>");
+          }
+          if(!dkarten.length) continue;
+          dteil.push("<h3 class=\"gruppe\">" + esc(dgr.name) + "</h3>" + dkarten.join(""));
+        }
+        if(!dteil.length) continue;
+        etwas = true;
+        dalles.push("<div class=\"diagkopf\"><strong>" + esc(dg.code) + "  " + esc(dg.name) + "</strong>" +
+          "<span class=\"ll\">" + esc(dg.ll) + "</span></div>" + dteil.join(""));
+      }
+      if(etwas) teil.push("<div class=\"chips wahlreihe\">" + wahl.join("") + "</div>" + dalles.join(""));
+
+    } else if(abs.typ === "wort"){
+      for(var f=0; f<abs.felder.length; f++){
+        var fe = abs.felder[f];
+        var worte = [];
+        for(var w=0; w<fe.w.length; w++){
+          if(q && !passt(fe.w[w],q) && !passt(fe.n,q)) continue;
+          worte.push("<button class=\"chip\" data-wort=\"" + esc(roh(fe.w[w])) + "\">" + alsHtml(fe.w[w],q) + "</button>");
+        }
+        if(!worte.length) continue;
+        treffer += worte.length;
+        teil.push("<div class=\"wortfeld\"><h4>" + esc(fe.n) + "</h4>" +
+          (fe.s ? "<p class=\"sub\">" + esc(fe.s) + "</p>" : "") +
+          "<div class=\"chips\">" + worte.join("") + "</div></div>");
+      }
+
+    } else {
+      for(var g=0; g<abs.gruppen.length; g++){
+        var gr = abs.gruppen[g];
+        var karten = [];
+        for(var it=0; it<gr.items.length; it++){
+          var zeilen = [];
+          for(var v=0; v<gr.items[it].length; v++){
+            var t = gr.items[it][v];
+            if(q && !passt(t,q) && !passt(gr.name,q) && !passt(abs.titel,q)) continue;
+            zeilen.push("<div class=\"variante\"><div class=\"txt\">" + alsHtml(t,q) + "</div>" + werkzeuge(t) + "</div>");
+          }
+          if(!zeilen.length) continue;
+          treffer += zeilen.length;
+          karten.push("<div class=\"karte\">" + zeilen.join("") + "</div>");
+        }
+        if(!karten.length) continue;
+        teil.push("<h3 class=\"gruppe\">" + esc(gr.name) + "</h3>" + karten.join(""));
+      }
+    }
+
+    if(!teil.length) continue;
+    h.push("<section><div class=\"kapitel-kopf\"><h2>" + esc(abs.titel) + "</h2>" +
+      (abs.hinweis ? "<div class=\"hinweis\">" + esc(abs.hinweis) + "</div>" : "") +
+      "</div>" + teil.join("") + "</section>");
+  }
+
+  if(q && treffer > 0){
+    h.unshift("<p class=\"trefferzeile\">" + treffer + " Treffer für „" + esc(q) +
+      "“ <button id=\"sucheWeg\">Suche aufheben</button></p>");
+  }
+  if(!h.length || (q && treffer === 0)){
+    h = ["<p class=\"leer\">Kein Treffer. Kürzere oder allgemeinere Begriffe funktionieren besser, etwa „Vermeidung“ statt „Vermeidungsverhalten in sozialen Situationen“. <button id=\"sucheWeg\">Suche aufheben</button></p>"];
+  }
+
+  h.push("<div class=\"fussnote\">Gliederung nach dem Leitfaden zum Erstellen des Berichts an die Gutachterin oder den Gutachter, Muster PTV 3 (7.2020), gültig ab 01.07.2020, Kassenärztliche Bundesvereinigung: " +
+    "<a href=\"https://update.kbv.de/ita-update/Abrechnung/EXT_ITA_AHEX_PTV3.pdf\">update.kbv.de</a>. " +
+    "Die Formulierungen selbst sind Vorschläge ohne amtlichen Charakter und ersetzen weder die individuelle Fallkonzeption noch die fachliche Prüfung im Einzelfall. " +
+    "Leitlinienangaben nach dem Stand vom 12.09.2026; abgelaufene Leitlinien sind im Diagnosekopf gekennzeichnet. " +
+    "Maßgeblich sind die Psychotherapie-Richtlinie des G-BA und die Psychotherapie-Vereinbarung in ihrer jeweils geltenden Fassung.</div>");
+
+  ziel.innerHTML = h.join("");
+  verdrahten(ziel);
+}
+
+function verdrahten(ziel){
+  var kb = ziel.querySelectorAll("[data-kopie]");
+  for(var a=0;a<kb.length;a++){
+    kb[a].addEventListener("click", function(){ kopieren(this.getAttribute("data-kopie"), this); });
+  }
+  var sb = ziel.querySelectorAll("[data-sammeln]");
+  for(var b=0;b<sb.length;b++){
+    sb[b].addEventListener("click", function(){
+      var t = this.getAttribute("data-sammeln");
+      if(korb.indexOf(t) === -1){ korb.push(t); meldung("Zur Sammlung hinzugefügt"); }
+      else meldung("Steht schon in der Sammlung");
+      this.classList.add("drin");
+      korbSichern(); korbZeichnen();
+    });
+  }
+  var db = ziel.querySelectorAll("[data-diag]");
+  for(var c=0;c<db.length;c++){
+    db[c].addEventListener("click", function(){
+      aktiveDiag = parseInt(this.getAttribute("data-diag"),10);
+      document.getElementById("suche").value = "";
+      zeichnen(); window.scrollTo(0,0);
+    });
+  }
+  var cb = ziel.querySelectorAll("[data-wort]");
+  for(var e=0;e<cb.length;e++){
+    cb[e].addEventListener("click", function(){ kopieren(this.getAttribute("data-wort"), this); });
+  }
+  var ph = ziel.querySelectorAll("[data-ph]");
+  for(var p=0;p<ph.length;p++){
+    ph[p].addEventListener("click", function(){ maskeOeffnen(this.getAttribute("data-ph")); });
+  }
+  var sw = ziel.querySelector("#sucheWeg");
+  if(sw) sw.addEventListener("click", function(){
+    document.getElementById("suche").value = ""; zeichnen(); window.scrollTo(0,0);
+  });
+}
+
+/* ---------- Sammlung ---------- */
+function korbSichern(){ Speicher.schreiben("fb.korb", JSON.stringify(korb)); }
+function korbLaden(){
+  var r = Speicher.lesen("fb.korb");
+  if(!r) return;
+  try {
+    var x = JSON.parse(r);
+    if(Object.prototype.toString.call(x) === "[object Array]") korb = x;
+  } catch(e){}
+}
+function korbZeichnen(){
+  document.getElementById("korbZahl").textContent = korb.length;
+  var l = document.getElementById("korbListe");
+  if(!korb.length){
+    l.innerHTML = "<p class=\"leer\">Noch nichts gesammelt. Mit ＋ neben einem Baustein wandert er hierher; am Ende alles auf einmal kopieren oder als Textdatei sichern.</p>";
+    return;
+  }
+  var zeichen = korb.join("\n\n").length;
+  var h = ["<p class=\"umfang\">" + korb.length + " Bausteine, " + zeichen + " Zeichen, etwa " +
+    (Math.round(zeichen / 2800 * 10) / 10) + " Seiten Fließtext</p>", "<ol>"];
+  for(var i=0;i<korb.length;i++){
+    h.push("<li>" + esc(korb[i]) +
+      "<span class=\"korbwerkzeuge\">" +
+      "<button data-hoch=\"" + i + "\" title=\"Nach oben\">↑</button>" +
+      "<button data-runter=\"" + i + "\" title=\"Nach unten\">↓</button>" +
+      "<button data-weg=\"" + i + "\">entfernen</button>" +
+      "</span></li>");
+  }
+  h.push("</ol>");
+  l.innerHTML = h.join("");
+
+  var tausch = function(i,j){
+    if(j < 0 || j >= korb.length) return;
+    var t = korb[i]; korb[i] = korb[j]; korb[j] = t;
+    korbSichern(); korbZeichnen();
+  };
+  var w = l.querySelectorAll("[data-weg]");
+  for(var j=0;j<w.length;j++){
+    w[j].addEventListener("click", function(){
+      korb.splice(parseInt(this.getAttribute("data-weg"),10),1);
+      korbSichern(); korbZeichnen();
+    });
+  }
+  var hoch = l.querySelectorAll("[data-hoch]");
+  for(var m=0;m<hoch.length;m++){
+    hoch[m].addEventListener("click", function(){
+      var i = parseInt(this.getAttribute("data-hoch"),10); tausch(i, i-1);
+    });
+  }
+  var run = l.querySelectorAll("[data-runter]");
+  for(var n=0;n<run.length;n++){
+    run[n].addEventListener("click", function(){
+      var i = parseInt(this.getAttribute("data-runter"),10); tausch(i, i+1);
+    });
+  }
+}
+function korbDatei(){
+  if(!korb.length){ meldung("Die Sammlung ist leer"); return; }
+  try {
+    var b = new Blob([korb.join("\n\n")], {type:"text/plain;charset=utf-8"});
+    var u = URL.createObjectURL(b);
+    var a = document.createElement("a");
+    a.href = u; a.download = "Bausteine.txt";
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(u); }, 2000);
+  } catch(e){ meldung("Download hier nicht möglich"); }
+}
+
+/* ---------- Maske ---------- */
+function maskeZahlZeigen(){
+  document.getElementById("maskeZahl").textContent = fallZahl();
+}
+function maskeZeichnen(){
+  var filter = document.getElementById("maskeFilter").value.trim().toLowerCase();
+  var liste = phInventar();
+  var konst = [], rest = [];
+  for(var i=0;i<liste.length;i++){
+    var e = liste[i];
+    if(filter && e.name.toLowerCase().indexOf(filter) === -1) continue;
+    var zeile = "<label class=\"feld\"><span>" + escPlain(e.name) + " <i>" + e.n + "</i></span>" +
+      "<input type=\"text\" data-feld=\"" + escPlain(e.name) + "\" value=\"" + escPlain(fallwerte[e.name] || "") + "\"></label>";
+    if(KONSTANT.indexOf(e.name) !== -1) konst.push(zeile); else rest.push(zeile);
+  }
+  var h = [];
+  if(konst.length) h.push("<h5>Fallkonstanten</h5><div class=\"felder\">" + konst.join("") + "</div>");
+  if(rest.length) h.push("<h5>Weitere Platzhalter</h5><p class=\"sub\">Werte wie Anzahl, Wert oder Datum unterscheiden sich meist je Satz; sie hier zu setzen füllt jede Fundstelle gleich.</p>" +
+    "<div class=\"felder\">" + rest.join("") + "</div>");
+  if(!h.length) h.push("<p class=\"leer\">Kein Platzhalter mit diesem Namen.</p>");
+  document.getElementById("maskeListe").innerHTML = h.join("");
+
+  var inp = document.getElementById("maskeListe").querySelectorAll("[data-feld]");
+  for(var j=0;j<inp.length;j++){
+    inp[j].addEventListener("input", function(){
+      var k = this.getAttribute("data-feld");
+      var v = this.value;
+      if(v && v.length) fallwerte[k] = v; else delete fallwerte[k];
+      maskeZahlZeigen();
+      fallSichern();
+      clearTimeout(fallTimer);
+      fallTimer = setTimeout(function(){ zeichnen(); korbZeichnen(); }, 350);
+    });
+  }
+}
+function maskeOeffnen(name){
+  document.getElementById("maske").classList.add("offen");
+  document.getElementById("korb").classList.remove("offen");
+  if(name){ document.getElementById("maskeFilter").value = name; }
+  maskeZeichnen();
+  if(name){
+    var f = document.getElementById("maskeListe").querySelector("[data-feld]");
+    if(f) f.focus();
+  }
+}
+
+/* ---------- Genusumschalter ---------- */
+function genusSetzen(g){
+  genus = g;
+  Speicher.schreiben("fb.genus", g);
+  var b = document.getElementById("genus").getElementsByTagName("button");
+  for(var i=0;i<b.length;i++){
+    b[i].className = (b[i].getAttribute("data-g") === g) ? "aktiv" : "";
+  }
+  zeichnen(); korbZeichnen();
+}
+
+/* ---------- Start ---------- */
+document.getElementById("suche").addEventListener("input", function(){
+  clearTimeout(suchTimer);
+  suchTimer = setTimeout(zeichnen, 140);
+});
+document.getElementById("korbKnopf").addEventListener("click", function(){
+  document.getElementById("korb").classList.toggle("offen");
+});
+document.getElementById("korbZu").addEventListener("click", function(){
+  document.getElementById("korb").classList.remove("offen");
+});
+document.getElementById("korbLeeren").addEventListener("click", function(){
+  korb = []; korbSichern(); korbZeichnen(); zeichnen();
+});
+document.getElementById("korbKopieren").addEventListener("click", function(){
+  if(!korb.length){ meldung("Die Sammlung ist leer"); return; }
+  kopieren(korb.join("\n\n"), null);
+});
+document.getElementById("korbDatei").addEventListener("click", korbDatei);
+var gb = document.getElementById("genus").getElementsByTagName("button");
+for(var gi=0; gi<gb.length; gi++){
+  gb[gi].addEventListener("click", function(){ genusSetzen(this.getAttribute("data-g")); });
+}
+
+document.getElementById("maskeKnopf").addEventListener("click", function(){
+  if(document.getElementById("maske").classList.contains("offen")){
+    document.getElementById("maske").classList.remove("offen");
+  } else {
+    document.getElementById("maskeFilter").value = "";
+    maskeOeffnen(null);
+  }
+});
+document.getElementById("maskeZu").addEventListener("click", function(){
+  document.getElementById("maske").classList.remove("offen");
+});
+document.getElementById("maskeFilter").addEventListener("input", maskeZeichnen);
+document.getElementById("maskeLeeren").addEventListener("click", function(){
+  fallwerte = {}; fallSichern(); maskeZahlZeigen(); maskeZeichnen(); zeichnen(); korbZeichnen();
+  meldung("Fallwerte geleert");
+});
+document.getElementById("fallSpeichern").addEventListener("change", function(){
+  fallSpeichern = this.checked; fallSichern();
+});
+
+if("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")){
+  window.addEventListener("load", function(){
+    navigator.serviceWorker.register("sw.js").catch(function(){});
+  });
+}
+
+korbLaden();
+fallLaden();
+document.getElementById("fallSpeichern").checked = fallSpeichern;
+maskeZahlZeigen();
+var gsp = Speicher.lesen("fb.genus");
+if(gsp === "m" || gsp === "w") genus = gsp;
+reiterBauen();
+korbZeichnen();
+genusSetzen(genus);
+
+</script>
+</body>
+</html>
